@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { Menu, X } from 'lucide-react';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -10,29 +11,32 @@ const Navbar: React.FC = () => {
   const [active, setActive] = useState('Home');
   const [visible, setVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      if (!isMenuOpen) {
+        setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      }
       setPrevScrollPos(currentScrollPos);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos]);
+  }, [prevScrollPos, isMenuOpen]);
 
   const navLinks = ['Home', 'Work', 'Skills', 'Journey', 'Contact'];
 
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-transform duration-500 ease-in-out px-6 py-4",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out px-4 md:px-6 py-4",
         visible ? "translate-y-0" : "-translate-y-full"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between glass px-6 py-3 rounded-full">
-        <div className="text-xl font-bold tracking-tighter text-white">
+      <div className="max-w-7xl mx-auto flex items-center justify-between glass px-4 md:px-6 py-3 rounded-full border border-white/10 shadow-lg backdrop-blur-xl">
+        <div className="text-xl font-black tracking-tighter text-white uppercase italic">
           Aravind P
         </div>
         
@@ -43,8 +47,8 @@ const Navbar: React.FC = () => {
               href={`#${link.toLowerCase()}`}
               onClick={() => setActive(link)}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-white",
-                active === link ? "text-white" : "text-gray-400"
+                "text-xs font-bold uppercase tracking-widest transition-all hover:text-white",
+                active === link ? "text-white" : "text-white/40"
               )}
             >
               {link}
@@ -52,9 +56,35 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        <button className="md:hidden text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <button 
+          className="md:hidden text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={cn(
+        "fixed inset-0 bg-black/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 md:hidden",
+        isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+      )}>
+        {navLinks.map((link) => (
+          <a
+            key={link}
+            href={`#${link.toLowerCase()}`}
+            onClick={() => {
+              setActive(link);
+              setIsMenuOpen(false);
+            }}
+            className={cn(
+              "text-3xl font-black uppercase tracking-tighter transition-all",
+              active === link ? "text-white scale-110" : "text-white/20"
+            )}
+          >
+            {link}
+          </a>
+        ))}
       </div>
     </nav>
   );

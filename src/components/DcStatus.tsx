@@ -93,34 +93,34 @@ const DcStatus: React.FC = () => {
   }
 
   return (
-    <div className="w-full max-w-lg mx-auto">
-      <div className="glass-dark p-6 rounded-[2.5rem] border border-white/5 shadow-2xl backdrop-blur-2xl">
+    <div className="w-full max-w-md md:max-w-lg mx-0 md:mx-auto lg:mx-0">
+      <div className="glass-dark p-4 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl backdrop-blur-2xl">
         {/* Profile Section */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 md:gap-5">
           <div className="relative group">
             <div className={`absolute -inset-0.5 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000 ${getStatusColor(data.status)}`}></div>
-            <div className="relative p-1 bg-black rounded-full overflow-hidden">
+            <div className="relative p-0.5 md:p-1 bg-black rounded-full overflow-hidden">
               <img
                 src={data.avathar}
                 alt={data.username}
-                className="w-16 h-16 rounded-full object-cover"
+                className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover"
               />
-              <div className={`absolute bottom-1 right-1 w-4 h-4 border-2 border-black rounded-full ${getStatusColor(data.status)}`}></div>
+              <div className={`absolute bottom-0.5 right-0.5 w-3 h-3 md:w-4 md:h-4 border-2 border-black rounded-full ${getStatusColor(data.status)}`}></div>
             </div>
           </div>
           
           <div className="flex-1">
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
+            <h3 className="text-sm md:text-lg font-bold text-white flex items-center gap-2">
               @{data.username}
-              <span className="px-2 py-0.5 rounded-md bg-white/5 text-[10px] font-mono text-gray-400 border border-white/10">Verified Status</span>
+              <span className="px-1.5 py-0.5 rounded-md bg-white/5 text-[8px] md:text-[10px] font-mono text-gray-400 border border-white/10">LIVE</span>
             </h3>
-            <p className="text-xs text-gray-400 font-medium tracking-wide first-letter:uppercase">
+            <p className="text-[10px] md:text-xs text-gray-400 font-medium tracking-wide first-letter:uppercase">
               {getStatusText(data.status)}
             </p>
           </div>
           
-          <div className="p-3 rounded-full bg-white/5 border border-white/10 opacity-50">
-             <ExternalLink size={14} className="text-white" />
+          <div className="hidden sm:flex p-2 md:p-3 rounded-full bg-white/5 border border-white/10 opacity-50">
+             <ExternalLink size={12} className="md:size-14 text-white" />
           </div>
         </div>
 

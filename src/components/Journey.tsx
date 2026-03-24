@@ -43,12 +43,12 @@ const Journey: React.FC = () => {
   }, []);
 
   return (
-    <section id="journey" ref={sectionRef} className="py-24 md:py-48 px-6 bg-black relative overflow-hidden">
+    <section id="journey" ref={sectionRef} className="py-24 md:py-48 px-8 md:px-24 bg-black relative overflow-hidden">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-24">
-          <span className="text-accent font-bold tracking-widest uppercase mb-4 block">Trajectory</span>
-          <h2 className="text-6xl md:text-8xl font-bold text-white tracking-tighter mb-8">
-            My Journey
+          <span className="text-secondary text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase mb-4 block opacity-50">Trajectory</span>
+          <h2 className="text-6xl md:text-[10rem] font-black text-white tracking-tighter mb-8 leading-none">
+            My <span className="text-transparent font-black" style={{ WebkitTextStroke: '2px white' }}>Journey</span>
           </h2>
         </div>
 
