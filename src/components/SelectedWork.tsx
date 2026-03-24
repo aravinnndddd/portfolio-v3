@@ -22,9 +22,9 @@ const projects = [
   },
   {
     title: "Discord Echo",
-    url: "https://github.com/aravinnndddd/Discord-Echo",
+    url: "https://discord-echo.vercel.app/",
     description: "Show your live Discord status, coding activity, and Spotify presence on the web with a self-hosted API.",
-    image: "https://images.unsplash.com/photo-1614680376593-902f74cc0d41?q=80&w=2074&auto=format&fit=crop",
+    image: "./discordEcho.png",
 
   }
 ];

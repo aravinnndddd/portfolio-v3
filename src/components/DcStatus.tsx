@@ -108,7 +108,7 @@ const DcStatus: React.FC = () => {
               <div className={`absolute bottom-0.5 right-0.5 w-3 h-3 md:w-4 md:h-4 border-2 border-black rounded-full ${getStatusColor(data.status)}`}></div>
             </div>
           </div>
-          
+
           <div className="flex-1">
             <h3 className="text-sm md:text-lg font-bold text-white flex items-center gap-2">
               @{data.username}
@@ -118,10 +118,8 @@ const DcStatus: React.FC = () => {
               {getStatusText(data.status)}
             </p>
           </div>
-          
-          <div className="hidden sm:flex p-2 md:p-3 rounded-full bg-white/5 border border-white/10 opacity-50">
-             <ExternalLink size={12} className="md:size-14 text-white" />
-          </div>
+
+
         </div>
 
         {/* Activities Section */}
@@ -147,7 +145,7 @@ const DcStatus: React.FC = () => {
                     alt={activity.name}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                     onError={(e) => {
-                       (e.target as HTMLImageElement).src = "/api/placeholder/48/48";
+                      (e.target as HTMLImageElement).src = "/api/placeholder/48/48";
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>

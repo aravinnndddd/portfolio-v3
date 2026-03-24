@@ -28,6 +28,15 @@ const Navbar: React.FC = () => {
 
   const navLinks = ['Home', 'Work', 'Skills', 'Journey', 'Contact'];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    e.preventDefault();
+    setActive(link);
+    const target = document.getElementById(link.toLowerCase());
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <nav
       className={cn(
@@ -45,7 +54,7 @@ const Navbar: React.FC = () => {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              onClick={() => setActive(link)}
+              onClick={(e) => handleNavClick(e, link)}
               className={cn(
                 "text-xs font-bold uppercase tracking-widest transition-all hover:text-white",
                 active === link ? "text-white" : "text-white/40"
@@ -73,8 +82,8 @@ const Navbar: React.FC = () => {
           <a
             key={link}
             href={`#${link.toLowerCase()}`}
-            onClick={() => {
-              setActive(link);
+            onClick={(e) => {
+              handleNavClick(e, link);
               setIsMenuOpen(false);
             }}
             className={cn(

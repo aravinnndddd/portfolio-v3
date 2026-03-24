@@ -11,16 +11,14 @@ const Footer: React.FC = () => {
         </h2>
 
         <div className="flex gap-8 mb-16">
-          <a href="#" className="p-4 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
+          <a href="https://github.com/aravinnndddd" className="p-4 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
             <Github size={24} />
           </a>
-          <a href="#" className="p-4 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
-            <Twitter size={24} />
-          </a>
-          <a href="#" className="p-4 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
+
+          <a href="https://www.linkedin.com/in/aravind-p-832849331/" className="p-4 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
             <Linkedin size={24} />
           </a>
-          <a href="mailto:aravind@example.com" className="p-4 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
+          <a href="mailto:aravindlernskills@gmail.com" className="p-4 bg-white/5 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
             <Mail size={24} />
           </a>
         </div>
@@ -33,13 +31,13 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 text-gray-500 font-medium">
-            Built with <Heart size={16} className="text-red-500" /> using React & GSAP
+            Built with <Heart size={16} className="text-red-500" /> by Me!
           </div>
 
-          <div className="flex gap-8">
+          {/* <div className="flex gap-8">
             <a href="#" className="text-sm font-bold text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="text-sm font-bold text-gray-500 hover:text-white transition-colors">Terms of Service</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

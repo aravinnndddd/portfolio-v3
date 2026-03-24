@@ -38,6 +38,7 @@ const Hero: React.FC = () => {
 
   return (
     <section
+      id='home'
       ref={heroRef}
       className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#050505]"
     >
