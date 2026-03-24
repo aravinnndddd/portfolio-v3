@@ -31,16 +31,21 @@ interface Resp {
 const DcStatus: React.FC = () => {
   const [data, setData] = useState<Resp | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(API_URL);
+        if (!res.ok) throw new Error("API request failed");
         const json = await res.json();
         setData(json);
+        setError(false);
         setLoading(false);
       } catch (err) {
         console.error("API error", err);
+        setError(true);
+        setLoading(false);
       }
     };
 
@@ -95,10 +100,30 @@ const DcStatus: React.FC = () => {
     return <Monitor size={16} className="text-purple-400" />;
   };
 
-  if (loading || !data) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center p-6 glass-dark rounded-3xl animate-pulse">
         <div className="w-12 h-12 bg-white/10 rounded-full"></div>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="w-full max-w-md md:max-w-lg mx-0 md:mx-auto lg:mx-0">
+        <div className="glass-dark p-4 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 shadow-2xl backdrop-blur-2xl">
+          <div className="flex flex-col items-center justify-center gap-3 py-6">
+            <div className="text-4xl">🔗</div>
+            <p className="text-sm md:text-base font-semibold text-white text-center">
+              Discord Status Unavailable
+            </p>
+            <p className="text-xs md:text-sm text-gray-400 text-center">
+              {error
+                ? "Render free plan has expired. Discord bot is currently offline."
+                : "Loading Discord status..."}
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
