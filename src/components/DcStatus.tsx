@@ -139,7 +139,11 @@ const DcStatus: React.FC = () => {
               >
                 <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-white/5 flex-shrink-0">
                   <img
-                    src={activity.assets?.spotifyAlbumArt || activity.assets?.largeImage || "/api/placeholder/48/48"}
+                    src={
+                      (activity.name.toLowerCase().includes("spotify") && activity.assets?.spotifyAlbumArt)
+                        ? activity.assets.spotifyAlbumArt
+                        : (activity.assets?.largeImage || "/api/placeholder/48/48")
+                    }
                     alt={activity.name}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                     onError={(e) => {
