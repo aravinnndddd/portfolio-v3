@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Terminal, Gamepad2, Music, Code2, Monitor, ExternalLink } from "lucide-react";
+import { Terminal, Gamepad2, Music, Code2, Monitor } from "lucide-react";
 
 const USER_ID = "754961569858846770";
 const API_URL = `https://discord-echo-u4ak.onrender.com/api/activities/${USER_ID}`;
@@ -51,19 +51,27 @@ const DcStatus: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "online": return "bg-green-500";
-      case "idle": return "bg-yellow-400";
-      case "dnd": return "bg-red-500";
-      default: return "bg-gray-400";
+      case "online":
+        return "bg-green-500";
+      case "idle":
+        return "bg-yellow-400";
+      case "dnd":
+        return "bg-red-500";
+      default:
+        return "bg-gray-400";
     }
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case "online": return "Active & Available";
-      case "idle": return "Away for a bit";
-      case "dnd": return "Deep Work Mode";
-      default: return "Offline";
+      case "online":
+        return "Active & Available";
+      case "idle":
+        return "Away for a bit";
+      case "dnd":
+        return "Deep Work Mode";
+      default:
+        return "Offline";
     }
   };
 
@@ -78,9 +86,12 @@ const DcStatus: React.FC = () => {
 
   const getActivityIcon = (name: string) => {
     const n = name.toLowerCase();
-    if (n.includes('valorant') || n.includes('league') || n.includes('game')) return <Gamepad2 size={16} className="text-red-400" />;
-    if (n.includes('spotify') || n.includes('music')) return <Music size={16} className="text-green-400" />;
-    if (n.includes('code') || n.includes('vs code')) return <Code2 size={16} className="text-blue-400" />;
+    if (n.includes("valorant") || n.includes("league") || n.includes("game"))
+      return <Gamepad2 size={16} className="text-red-400" />;
+    if (n.includes("spotify") || n.includes("music"))
+      return <Music size={16} className="text-green-400" />;
+    if (n.includes("code") || n.includes("vs code"))
+      return <Code2 size={16} className="text-blue-400" />;
     return <Monitor size={16} className="text-purple-400" />;
   };
 
@@ -98,28 +109,32 @@ const DcStatus: React.FC = () => {
         {/* Profile Section */}
         <div className="flex items-center gap-3 md:gap-5">
           <div className="relative group">
-            <div className={`absolute -inset-0.5 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000 ${getStatusColor(data.status)}`}></div>
+            <div
+              className={`absolute -inset-0.5 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000 ${getStatusColor(data.status)}`}
+            ></div>
             <div className="relative p-0.5 md:p-1 bg-black rounded-full overflow-hidden">
               <img
                 src={data.avathar}
                 alt={data.username}
                 className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover"
               />
-              <div className={`absolute bottom-0.5 right-0.5 w-3 h-3 md:w-4 md:h-4 border-2 border-black rounded-full ${getStatusColor(data.status)}`}></div>
+              <div
+                className={`absolute bottom-0.5 right-0.5 w-3 h-3 md:w-4 md:h-4 border-2 border-black rounded-full ${getStatusColor(data.status)}`}
+              ></div>
             </div>
           </div>
 
           <div className="flex-1">
             <h3 className="text-sm md:text-lg font-bold text-white flex items-center gap-2">
               @{data.username}
-              <span className="px-1.5 py-0.5 rounded-md bg-white/5 text-[8px] md:text-[10px] font-mono text-gray-400 border border-white/10">LIVE</span>
+              <span className="px-1.5 py-0.5 rounded-md bg-white/5 text-[8px] md:text-[10px] font-mono text-gray-400 border border-white/10">
+                LIVE
+              </span>
             </h3>
             <p className="text-[10px] md:text-xs text-gray-400 font-medium tracking-wide first-letter:uppercase">
               {getStatusText(data.status)}
             </p>
           </div>
-
-
         </div>
 
         {/* Activities Section */}
@@ -127,7 +142,9 @@ const DcStatus: React.FC = () => {
           {data.activities.length === 0 ? (
             <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/5">
               <Terminal size={18} className="text-gray-500" />
-              <code className="text-xs text-gray-500">console.log("Peacefully Idle");</code>
+              <code className="text-xs text-gray-500">
+                console.log("Peacefully Idle");
+              </code>
             </div>
           ) : (
             data.activities.map((activity, index) => (
@@ -138,14 +155,17 @@ const DcStatus: React.FC = () => {
                 <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-white/5 flex-shrink-0">
                   <img
                     src={
-                      (activity.name.toLowerCase().includes("spotify") && activity.assets?.spotifyAlbumArt)
+                      activity.name.toLowerCase().includes("spotify") &&
+                      activity.assets?.spotifyAlbumArt
                         ? activity.assets.spotifyAlbumArt
-                        : (activity.assets?.largeImage || "/api/placeholder/48/48")
+                        : activity.assets?.largeImage ||
+                          "/api/placeholder/48/48"
                     }
                     alt={activity.name}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = "/api/placeholder/48/48";
+                      (e.target as HTMLImageElement).src =
+                        "/api/placeholder/48/48";
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
