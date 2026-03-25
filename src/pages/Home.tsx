@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "../components/Hero";
 import SelectedWork from "../components/SelectedWork";
-import VideoScrub from "../components/VideoScrub";
+// import Artworks from "../components/Artworks";
 import Skills from "../components/Skills";
 import Journey from "../components/Journey";
 
@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <>
       <Hero />
       <SelectedWork />
-      <VideoScrub />
+      {/* <Artworks /> */}
       <Skills />
       <Journey />
     </>
