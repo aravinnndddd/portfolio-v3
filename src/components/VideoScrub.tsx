@@ -49,7 +49,7 @@ const VideoScrub: React.FC = () => {
             images={artworkImages}
             fit={1}
             minRadius={600}
-            dragSensitivity={20}
+            segments={22}
             grayscale={false}
             imageBorderRadius="20px"
             overlayBlurColor="#000000"
