@@ -20,7 +20,7 @@ export const projects: Project[] = [
   },
     {
     title: "Make Resume",
-    url: "make-resume-kohl.vercel.app",
+    url: "https://make-resume-kohl.vercel.app/",
     description: "Create beautiful, professional resumes with our easy-to-use resume builder. Choose from multiple templates and download as PDF.",
     image: "./makeresume.png",
   },
