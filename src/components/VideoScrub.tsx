@@ -3,19 +3,19 @@ import DomeGallery from "./DomeGallery";
 
 const artworkImages = [
   "/artworks/IMG_20240928_190908242.jpg",
-  "/artworks/IMG_20241003_222519752.jpg",
-  "/artworks/IMG_20241003_232222361.jpg",
-  "/artworks/IMG_20241003_233228129.jpg",
-  "/artworks/IMG_20241003_233232371~2.jpg",
-  "/artworks/IMG_20241003_233236246.jpg",
-  "/artworks/IMG_20241003_233239272.jpg",
-  "/artworks/IMG_20241003_233243288.jpg",
+  "/artworks/IMG_20241003_222519752.webp",
+  "/artworks/IMG_20241003_232222361.webp",
+  "/artworks/IMG_20241003_233228129.webp",
+  "/artworks/IMG_20241003_233232371~2.webp",
+  "/artworks/IMG_20241003_233236246.webp",
+  "/artworks/IMG_20241003_233239272.webp",
+  "/artworks/IMG_20241003_233243288.webp",
   "/artworks/IMG_20241003_233246644~2.jpg",
   "/artworks/IMG_20241003_233250829.jpg",
-  "/artworks/IMG_20241003_233257281.jpg",
-  "/artworks/IMG_20241003_233304736.jpg",
-  "/artworks/IMG_20241003_233314060.jpg",
-  "/artworks/IMG_20241003_233322262.jpg",
+  "/artworks/IMG_20241003_233257281.webp",
+  "/artworks/IMG_20241003_233304736.webp",
+  "/artworks/IMG_20241003_233314060.webp",
+  "/artworks/IMG_20241003_233322262.webp",
 ];
 
 const VideoScrub: React.FC = () => {
