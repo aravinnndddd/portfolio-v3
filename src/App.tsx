@@ -1,17 +1,30 @@
 import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { Analytics } from "@vercel/analytics/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import SelectedWork from "./components/SelectedWork";
-import VideoScrub from "./components/VideoScrub";
-import Skills from "./components/Skills";
-import Journey from "./components/Journey";
+import Home from "./pages/Home";
+import Works from "./pages/Works";
 import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  return null;
+};
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -41,16 +54,18 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <main className="bg-background text-foreground selection:bg-accent/30 selection:text-white">
-      <Analytics />
-      <Navbar />
-      <Hero />
-      <SelectedWork />
-      <VideoScrub />
-      <Skills />
-      <Journey />
-      <Footer />
-    </main>
+    <Router>
+      <main className="bg-background text-foreground selection:bg-accent/30 selection:text-white">
+        <Analytics />
+        <ScrollToTop />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/works" element={<Works />} />
+        </Routes>
+        <Footer />
+      </main>
+    </Router>
   );
 };
 
