@@ -16,11 +16,28 @@ import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollToTop: React.FC = () => {
+const ScrollManager: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    const reset = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    reset();
+    const raf = requestAnimationFrame(reset);
+    const timeoutId = window.setTimeout(reset, 50);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timeoutId);
+    };
   }, [pathname]);
 
   return null;
@@ -57,7 +74,8 @@ const App: React.FC = () => {
     <Router>
       <main className="bg-background text-foreground selection:bg-accent/30 selection:text-white">
         <Analytics />
-        <ScrollToTop />
+        <ScrollManager />
+
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
