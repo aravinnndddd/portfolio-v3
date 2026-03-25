@@ -157,7 +157,10 @@ const Skills: React.FC = () => {
               />
 
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:scale-110 group-hover:bg-accent/10 group-hover:text-accent group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-700">
+                <div
+                  className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:scale-110 group-hover:bg-accent/10 
+                text-white group-hover:text-accent group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-700"
+                >
                   <skill.Icon size={28} />
                 </div>
                 <h3 className="text-2xl font-black text-white mb-6 tracking-tight uppercase italic">
