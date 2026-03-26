@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+
+# Sitemaps
+Sitemap: https://aravind-p.vercel.app/sitemap.xml
+
+# Crawl delay (optional, adjust as needed)
+Crawl-delay: 1

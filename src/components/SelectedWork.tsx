@@ -36,6 +36,7 @@ const SelectedWork: React.FC = () => {
     <section
       id="work"
       className="relative overflow-hidden bg-[#030303] min-h-screen py-24  md:py-32"
+      aria-labelledby="selected-works-heading"
     >
       <div ref={triggerRef} className="relative z-10">
         {/* Section Header */}
@@ -43,7 +44,10 @@ const SelectedWork: React.FC = () => {
           <span className="text-secondary text-[10px] md:text-xs tracking-[0.4em] uppercase mb-2 opacity-50 font-bold">
             Curated Showcase
           </span>
-          <h2 className="text-6xl md:text-[8rem] font-black text-white tracking-tighter leading-[0.8]">
+          <h2
+            id="selected-works-heading"
+            className="text-6xl md:text-[8rem] font-black text-white tracking-tighter leading-[0.8]"
+          >
             Selected
             <br />
             <span
@@ -80,7 +84,9 @@ const SelectedWork: React.FC = () => {
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} - ${project.description}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover opacity-30 group-hover:scale-105 group-hover:opacity-10 transition-all duration-1000 ease-out"
                   />
 

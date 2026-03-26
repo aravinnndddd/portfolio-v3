@@ -5,7 +5,7 @@ const events = [
   {
     year: "2025 – Present",
     title: "Freelancer",
-    subtitle: "Full Stack Development",
+    subtitle: "Web Developer",
     description:
       "Building and delivering custom web solutions for clients. Specializing in React, TypeScript, and modern web technologies.",
   },
