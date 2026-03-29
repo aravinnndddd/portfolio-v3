@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { projects } from "../data/projects";
-import { updateMetaTags } from "../lib/seoUtils";
+import { updateMetaTags, SITE_URL, DEFAULT_OG_IMAGE } from "../lib/seoUtils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,8 +16,8 @@ const Works: React.FC = () => {
       title: "My Works - Aravind P's Project Portfolio",
       description:
         "Explore all of Aravind P's projects and works including makeQR, Kochi DevFest, Make Resume, Discord Echo, and CEP Hall.",
-      image: "https://aravind-p.vercel.app/og-image.png",
-      url: "https://aravind-p.vercel.app/works",
+      image: DEFAULT_OG_IMAGE,
+      url: `${SITE_URL}/works`,
       type: "website",
     });
 
