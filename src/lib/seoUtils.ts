@@ -11,6 +11,9 @@ interface MetaTagsConfig {
   type?: string;
 }
 
+export const SITE_URL = 'https://aravind-p.me';
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+
 export const updateMetaTags = (config: MetaTagsConfig) => {
   // Update title
   document.title = config.title;
@@ -28,7 +31,7 @@ export const updateMetaTags = (config: MetaTagsConfig) => {
   const ogTags = [
     { property: 'og:title', content: config.title },
     { property: 'og:description', content: config.description },
-    { property: 'og:image', content: config.image || '/og-image.png' },
+    { property: 'og:image', content: config.image || DEFAULT_OG_IMAGE },
     { property: 'og:url', content: config.url || window.location.href },
     { property: 'og:type', content: config.type || 'website' },
   ];
@@ -47,7 +50,7 @@ export const updateMetaTags = (config: MetaTagsConfig) => {
   const twitterTags = [
     { name: 'twitter:title', content: config.title },
     { name: 'twitter:description', content: config.description },
-    { name: 'twitter:image', content: config.image || '/og-image.png' },
+    { name: 'twitter:image', content: config.image || DEFAULT_OG_IMAGE },
   ];
 
   twitterTags.forEach(({ name, content }) => {
@@ -78,8 +81,8 @@ export const getPersonSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Aravind P',
-  url: 'https://aravind-p.vercel.app',
-  image: '/og-image.png',
+  url: SITE_URL,
+  image: DEFAULT_OG_IMAGE,
   sameAs: [
     'https://www.linkedin.com/in/aravind-p-832849331/',
     'https://github.com/aravinnndddd',
