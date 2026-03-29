@@ -16,8 +16,8 @@ const Works: React.FC = () => {
       title: "My Works - Aravind P's Project Portfolio",
       description:
         "Explore all of Aravind P's projects and works including makeQR, Kochi DevFest, Make Resume, Discord Echo, and CEP Hall.",
-      image: "https://aravind-p.vercel.app/og-image.png",
-      url: "https://aravind-p.vercel.app/works",
+      image: "https://aravind-p.me/og-image.png",
+      url: "https://aravind-p.me/works",
       type: "website",
     });
 
