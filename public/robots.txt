@@ -5,5 +5,10 @@ Disallow: /private/
 # Sitemaps
 Sitemap: https://aravind-p.me/sitemap.xml
 
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
 # Crawl delay (optional, adjust as needed)
 Crawl-delay: 1
