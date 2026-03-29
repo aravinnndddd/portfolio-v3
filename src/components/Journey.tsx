@@ -6,35 +6,32 @@ const events = [
     year: "2025 – Present",
     title: "Freelancer",
     subtitle: "Web Developer",
-    description:
-      "Building and delivering custom web solutions for clients. Specializing in React, TypeScript, and modern web technologies.",
+    description: "Building websites for clients.",
   },
   {
     year: "2025 – 2026",
     title: "GDG On Campus Organizer",
     subtitle: "College of Engineering Perumon",
     description:
-      "Leading the Google Developer Group community, organizing events, workshops, and fostering tech collaboration among students.",
+      "Organizing tech talks, workshops, and hackathons. Building a community for students to learn and network with tech professionals.",
   },
   {
     year: "2024 – Present",
     title: "B.Tech in Computer Science",
     subtitle: "College of Engineering Perumon",
-    description:
-      "Deepening my knowledge in algorithms, data structures, and advanced software engineering.",
+    description: "Studying computer science and engineering.",
   },
   {
     year: "2022 – 2024",
     title: "Higher Secondary – Science",
     subtitle: "GVHSS Kottankulangara, Chavara",
-    description:
-      "Focused on Physics, Chemistry, and Mathematics with a strong foundation in problem solving.",
+    description: "Completed higher secondary in science stream.",
   },
   {
     year: "2022",
     title: "SSLC",
     subtitle: "GVHSS Kottankulangara, Chavara",
-    description: "Completed secondary education with top honors.",
+    description: "Completed secondary education",
   },
 ];
 
