@@ -8,8 +8,6 @@ import {
   updateMetaTags,
   addStructuredData,
   getPersonSchema,
-  SITE_URL,
-  DEFAULT_OG_IMAGE,
 } from "../lib/seoUtils";
 
 const Home: React.FC = () => {

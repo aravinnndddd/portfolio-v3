@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { projects } from "../data/projects";
-import { updateMetaTags, SITE_URL, DEFAULT_OG_IMAGE } from "../lib/seoUtils";
+import { updateMetaTags } from "../lib/seoUtils";
 
 gsap.registerPlugin(ScrollTrigger);
 
