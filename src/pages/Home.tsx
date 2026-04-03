@@ -16,11 +16,11 @@ const Home: React.FC = () => {
   useEffect(() => {
     // Update meta tags for the home page
     updateMetaTags({
-      title: "Aravind P - Web Developer & GDG Campus Organizer",
+      title: "Aravind P - Portfolio",
       description:
         "Web Developer and Google Developer Group (GDG) Campus Organizer at College of Engineering Perumon. Explore my projects and professional journey.",
-      image: DEFAULT_OG_IMAGE,
-      url: `${SITE_URL}/`,
+      image: "https://aravind-p.me/og-image.png",
+      url: "https://aravind-p.me/",
       type: "website",
     });
 

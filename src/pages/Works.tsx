@@ -16,8 +16,8 @@ const Works: React.FC = () => {
       title: "My Works - Aravind P's Project Portfolio",
       description:
         "Explore all of Aravind P's projects and works including makeQR, Kochi DevFest, Make Resume, Discord Echo, and CEP Hall.",
-      image: DEFAULT_OG_IMAGE,
-      url: `${SITE_URL}/works`,
+      image: "https://aravind-p.me/og-image.png",
+      url: "https://aravind-p.me/works",
       type: "website",
     });
 
