@@ -20,6 +20,20 @@ const Home: React.FC = () => {
       image: "https://aravind-p.me/og-image.png",
       url: "https://aravind-p.me/",
       type: "website",
+      keywords: [
+        "Aravind P",
+        "aravinnndddd",
+        "Aravind portfolio",
+        "Web Developer",
+        "GDG Campus Organizer",
+        "College of Engineering Perumon",
+        "React developer",
+        "TypeScript developer",
+        "https://aravind-p.me",
+        "https://github.com/aravinnndddd",
+        "https://www.linkedin.com/in/aravind-p-832849331/",
+        "https://instagram.com/aravinnndddd",
+      ],
     });
 
     // Add structured data

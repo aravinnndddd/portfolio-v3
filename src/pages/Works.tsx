@@ -19,6 +19,20 @@ const Works: React.FC = () => {
       image: "https://aravind-p.me/og-image.png",
       url: "https://aravind-p.me/works",
       type: "website",
+      keywords: [
+        "Aravind works",
+        "aravinnndddd projects",
+        "Aravind P projects",
+        "makeQR",
+        "Kochi DevFest",
+        "Make Resume",
+        "Discord Echo",
+        "CEP Hall",
+        "https://aravind-p.me/works",
+        "https://github.com/aravinnndddd",
+        "https://www.linkedin.com/in/aravind-p-832849331/",
+        "https://instagram.com/aravinnndddd",
+      ],
     });
 
     // Stagger animation for project cards

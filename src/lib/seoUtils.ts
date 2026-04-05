@@ -9,6 +9,7 @@ interface MetaTagsConfig {
   image?: string;
   url?: string;
   type?: string;
+  keywords?: string[];
 }
 
 export const SITE_URL = 'https://aravind-p.me';
@@ -26,6 +27,17 @@ export const updateMetaTags = (config: MetaTagsConfig) => {
     document.head.appendChild(metaDescription);
   }
   metaDescription.setAttribute('content', config.description);
+
+  // Update meta keywords for improved query matching
+  if (config.keywords && config.keywords.length > 0) {
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', config.keywords.join(', '));
+  }
 
   // Update OG tags
   const ogTags = [
@@ -81,12 +93,13 @@ export const getPersonSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Aravind P',
+  alternateName: 'aravinnndddd',
   url: SITE_URL,
   image: DEFAULT_OG_IMAGE,
   sameAs: [
     'https://www.linkedin.com/in/aravind-p-832849331/',
     'https://github.com/aravinnndddd',
-  
+      'https://instagram.com/aravinnndddd',
   ],
 
 });

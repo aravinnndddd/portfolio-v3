@@ -9,7 +9,7 @@ const events = [
     description: "Building websites for clients.",
   },
   {
-    year: "2025 – 2026",
+    year: "2025 – Present",
     title: "GDG On Campus Organizer",
     subtitle: "College of Engineering Perumon",
     description:
