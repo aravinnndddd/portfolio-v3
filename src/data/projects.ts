@@ -19,6 +19,13 @@ export const projects: Project[] = [
     image: "./devfest.png",
   },
     {
+    title: "Course Hub",
+    url: "https://course-hub-amber.vercel.app/",
+    description: "A template-style UI for a course selling platform, designed to showcase course catalogs and pricing.",
+    image: "./coursehub.png",
+  }
+  ,
+    {
     title: "Make Resume",
     url: "https://make-resume-kohl.vercel.app/",
     description: "Create beautiful, professional resumes with our easy-to-use resume builder. Choose from multiple templates and download as PDF.",
@@ -31,6 +38,7 @@ export const projects: Project[] = [
     image: "./discordEcho.png",
   }
   ,
+
   {
     title: "CEP Hall",
     url: "https://cep-lab.vercel.app/",

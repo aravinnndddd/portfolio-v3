@@ -1,36 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
 import { projects } from "../data/projects";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const SelectedWork: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
   const homeProjects = projects.slice(0, 3);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Main Horizontal Pinning and Scroll
-      gsap.to(sectionRef.current, {
-        x: () => -(sectionRef.current!.scrollWidth - window.innerWidth),
-        ease: "none",
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          pin: true,
-          scrub: 1,
-          start: "top 85px top",
-          end: () => `+=${sectionRef.current!.scrollWidth}`,
-          invalidateOnRefresh: true,
-        },
-      });
-    }, triggerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
@@ -38,7 +12,7 @@ const SelectedWork: React.FC = () => {
       className="relative overflow-hidden bg-[#030303] min-h-screen py-24  md:py-32"
       aria-labelledby="selected-works-heading"
     >
-      <div ref={triggerRef} className="relative z-10">
+      <div className="relative z-10">
         {/* Section Header */}
         <div className="flex flex-col justify-end px-8 md:px-24 mb-10">
           <span className="text-secondary text-[10px] md:text-xs tracking-[0.4em] uppercase mb-2 opacity-50 font-bold">
@@ -50,8 +24,16 @@ const SelectedWork: React.FC = () => {
           >
             Selected
             <br />
+            <Link
+              to="/works"
+              className="inline-block md:hidden text-transparent"
+              style={{ WebkitTextStroke: "2px white" }}
+              aria-label="Open all works"
+            >
+              Works
+            </Link>
             <span
-              className="text-transparent"
+              className="hidden md:inline text-transparent"
               style={{ WebkitTextStroke: "2px white" }}
             >
               Works
@@ -59,19 +41,14 @@ const SelectedWork: React.FC = () => {
           </h2>
         </div>
 
-        {/* Horizontal Container with Reduced Height */}
-        <div
-          ref={sectionRef}
-          className="flex flex-row flex-nowrap relative h-[65vh] md:h-[60vh]"
-          style={{ width: "fit-content" }}
-        >
-          {homeProjects.map((project, index) => (
-            <div
-              key={index}
-              className="w-screen h-full flex items-center justify-center px-4 md:px-48"
-            >
-              {/* Simplified Card with Sliding Hover Reveal */}
-              <div className="group relative w-full h-full max-w-full md:max-w-7xl overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-black/40 border border-white/5 backdrop-blur-xl shadow-2xl transition-all duration-700">
+        {/* Vertical list with native scroll for better UX */}
+        <div className="px-4 md:px-24">
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 md:gap-10">
+            {homeProjects.map((project, index) => (
+              <div
+                key={index}
+                className="group relative h-[60vh] min-h-105 w-full overflow-hidden rounded-[2rem] md:h-[65vh] md:rounded-[3rem] bg-black/40 border border-white/5 backdrop-blur-xl shadow-2xl transition-all duration-700"
+              >
                 {/* Visual Indicator */}
                 <div className="absolute top-6 left-6 md:top-8 md:left-8 z-30 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
@@ -90,7 +67,7 @@ const SelectedWork: React.FC = () => {
                     className="w-full h-full object-cover opacity-30 group-hover:scale-105 group-hover:opacity-10 transition-all duration-1000 ease-out"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/20" />
                 </div>
 
                 {/* Project Info: Sliding Reveal */}
@@ -116,12 +93,12 @@ const SelectedWork: React.FC = () => {
                 </div>
 
                 {/* Decorative BG Number */}
-                <div className="absolute top-1/2 right-4 -translate-y-1/2 text-[15rem] md:text-[25rem] font-black text-white/[0.02] select-none pointer-events-none leading-none">
+                <div className="absolute top-1/2 right-4 -translate-y-1/2 text-[15rem] md:text-[25rem] font-black text-white/2 select-none pointer-events-none leading-none">
                   0{index + 1}
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 

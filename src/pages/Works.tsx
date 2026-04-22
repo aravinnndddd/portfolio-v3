@@ -13,16 +13,16 @@ const Works: React.FC = () => {
   useEffect(() => {
     // Update meta tags for the works page
     updateMetaTags({
-      title: "My Works - Aravind P's Project Portfolio",
+      title: "My Works - My Project Portfolio",
       description:
-        "Explore all of Aravind P's projects and works including makeQR, Kochi DevFest, Make Resume, Discord Echo, and CEP Hall.",
+        "Explore all of my projects and works including makeQR, Kochi DevFest, Make Resume, Discord Echo, and CEP Hall.",
       image: "https://aravind-p.me/og-image.png",
       url: "https://aravind-p.me/works",
       type: "website",
       keywords: [
-        "Aravind works",
+        "my works",
         "aravinnndddd projects",
-        "Aravind P projects",
+        "my projects",
         "makeQR",
         "Kochi DevFest",
         "Make Resume",
