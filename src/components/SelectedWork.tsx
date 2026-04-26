@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { projects } from "../data/projects";
 
 const SelectedWork: React.FC = () => {
   const homeProjects = projects.slice(0, 3);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardIds = useMemo(
+    () => homeProjects.map((_, index) => `work-card-${index}`),
+    [homeProjects],
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const id = Number(entry.target.getAttribute("data-card-id"));
+          if (Number.isNaN(id)) return;
+
+          setVisibleCards((prev) => (prev.includes(id) ? prev : [...prev, id]));
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.25,
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
+
+    const cardElements = cardIds
+      .map((id) => document.getElementById(id))
+      .filter((element): element is HTMLElement => Boolean(element));
+
+    cardElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, [cardIds]);
 
   return (
     <section
@@ -46,8 +79,15 @@ const SelectedWork: React.FC = () => {
           <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 md:gap-10">
             {homeProjects.map((project, index) => (
               <div
+                id={cardIds[index]}
+                data-card-id={index}
                 key={index}
-                className="group relative h-[60vh] min-h-105 w-full overflow-hidden rounded-[2rem] md:h-[65vh] md:rounded-[3rem] bg-black/40 border border-white/5 backdrop-blur-xl shadow-2xl transition-all duration-700"
+                className={`group relative h-[60vh] min-h-105 w-full overflow-hidden rounded-[2rem] md:h-[65vh] md:rounded-[3rem] bg-black/40 border border-white/5 backdrop-blur-xl shadow-2xl transition-all duration-700 ease-out ${
+                  visibleCards.includes(index)
+                    ? "translate-y-0 scale-100 opacity-100"
+                    : "translate-y-12 scale-[0.98] opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 80}ms` }}
               >
                 {/* Visual Indicator */}
                 <div className="absolute top-6 left-6 md:top-8 md:left-8 z-30 flex items-center gap-2">
@@ -72,11 +112,11 @@ const SelectedWork: React.FC = () => {
 
                 {/* Project Info: Sliding Reveal */}
                 <div className="absolute inset-0 p-8 md:p-16 flex flex-col justify-end overflow-hidden">
-                  <div className="translate-y-[60%] group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                  <div className="translate-y-0 md:translate-y-[60%] md:group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
                     <h3 className="text-4xl md:text-8xl font-black text-white mb-6 tracking-tighter leading-none">
                       {project.title}
                     </h3>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                    <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 delay-100">
                       <p className="text-sm md:text-lg text-white/50 mb-10 leading-relaxed max-w-2xl font-medium">
                         {project.description}
                       </p>
@@ -86,7 +126,7 @@ const SelectedWork: React.FC = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-4 px-10 py-4 bg-white text-black rounded-full font-black text-xs md:text-sm hover:scale-105 transition-all"
                       >
-                        EXPLORE PROJECT <ArrowRight size={18} />
+                        VIEW SITE <ArrowRight size={18} />
                       </a>
                     </div>
                   </div>

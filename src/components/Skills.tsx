@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { Cpu, Database, Layout, Zap } from "lucide-react";
+import { Cpu, Database, Layout, Rocket, Smartphone, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface Skill {
@@ -9,28 +9,61 @@ interface Skill {
   Icon: LucideIcon;
 }
 
+interface Service {
+  title: string;
+  description: string;
+  Icon: LucideIcon;
+}
+
 const skills: Skill[] = [
   {
-    category: "Frontend",
-    items: ["React", "HTML5", "CSS3", "Tailwind"],
+    category: "Languages",
+    items: ["TypeScript", "JavaScript", "HTML5", "CSS3"],
     Icon: Layout,
   },
-  { category: "Backend", items: ["Node.js", "REST API", "Express"], Icon: Cpu },
   {
     category: "Tools",
     items: ["VS Code", "GitHub", "Figma", "Vercel"],
     Icon: Zap,
   },
   {
-    category: "Database",
-    items: ["Firebase", "Supabase", "SQL"],
+    category: "Databases",
+    items: ["NoSQL", "SQL"],
     Icon: Database,
+  },
+];
+
+const services: Service[] = [
+  {
+    title: "Portfolio Websites",
+    description:
+      "High-performance personal and brand websites with custom motion.",
+    Icon: Layout,
+  },
+  {
+    title: "Landing Pages",
+    description:
+      "Conversion-focused product pages optimized for speed and SEO.",
+    Icon: Rocket,
+  },
+  {
+    title: "Ecommerce Websites",
+    description:
+      "Fast, conversion-focused online stores with clean checkout experiences.",
+    Icon: Cpu,
+  },
+  {
+    title: "Responsive UI",
+    description:
+      "Mobile-first interfaces that stay clean and usable on every screen.",
+    Icon: Smartphone,
   },
 ];
 
 const Skills: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const serviceCardsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -57,6 +90,61 @@ const Skills: React.FC = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 70%",
+        },
+      });
+
+      // Continuous scroll motion to make the section feel more alive.
+      gsap.to(cardsRef.current, {
+        yPercent: -8,
+        stagger: 0.12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      // Reveal each skill line when its card enters viewport.
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+
+        const skillItems = card.querySelectorAll(".skill-item");
+        gsap.from(skillItems, {
+          opacity: 0,
+          x: -18,
+          stagger: 0.08,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 82%",
+          },
+        });
+      });
+
+      gsap.from(".services-header > *", {
+        opacity: 0,
+        y: 20,
+        stagger: 0.12,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".services-section",
+          start: "top 85%",
+        },
+      });
+
+      gsap.from(serviceCardsRef.current, {
+        opacity: 0,
+        y: 40,
+        stagger: 0.1,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".services-section",
+          start: "top 82%",
         },
       });
     }, sectionRef);
@@ -137,7 +225,7 @@ const Skills: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skill, idx) => (
             <div
               key={idx}
@@ -170,7 +258,7 @@ const Skills: React.FC = () => {
                   {skill.items.map((item, i) => (
                     <li
                       key={i}
-                      className="text-white/40 font-bold text-sm tracking-wide flex items-center gap-3 group/item"
+                      className="skill-item text-white/40 font-bold text-sm tracking-wide flex items-center gap-3 group/item"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-accent/20 group-hover/item:bg-accent group-hover/item:scale-150 transition-all duration-300" />
                       {item}
@@ -180,6 +268,39 @@ const Skills: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="services-section mt-20 md:mt-28">
+          <div className="services-header mb-8 md:mb-10">
+            <span className="text-secondary text-[10px] md:text-xs font-black tracking-[0.5em] uppercase mb-4 block opacity-50">
+              Services
+            </span>
+            <h3 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+              Services I Do
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {services.map((service, idx) => (
+              <article
+                key={service.title}
+                ref={(el) => {
+                  serviceCardsRef.current[idx] = el;
+                }}
+                className="glass-dark rounded-3xl border border-white/6 p-6 md:p-7"
+              >
+                <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white flex items-center justify-center mb-5">
+                  <service.Icon size={20} />
+                </div>
+                <h4 className="text-white text-base md:text-lg font-extrabold tracking-tight mb-2">
+                  {service.title}
+                </h4>
+                <p className="text-white/45 text-sm leading-relaxed font-medium">
+                  {service.description}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
