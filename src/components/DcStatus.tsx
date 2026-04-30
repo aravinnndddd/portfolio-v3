@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Terminal, Gamepad2, Music, Code2, Monitor } from "lucide-react";
 
 const USER_ID = "754961569858846770";
-const API_URL = `discord-echo-production-3f87.up.railway.app/api/activities/${USER_ID}`;
+const API_URL = `https://discord-echo-production-3f87.up.railway.app/api/activities/${USER_ID}`;
 
 interface Activity {
   name: string;
