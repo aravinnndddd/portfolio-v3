@@ -7,12 +7,12 @@ export const projectsData: Project[] = [
   
     title: 'makeQR',
     image: '/makeqr.png',
-    tags: ['Next.js', 'TailwindCSS', 'TypeScript', 'Web Canvas API', 'Node.js'],
+    tags: ['Next.js', 'TailwindCSS', 'TypeScript'],
     description: 'A high-end, minimalist QR code generator dashboard interface. Built for creators and premium businesses looking for bespoke aesthetics.',
     client: 'makeQR Studio Inc.',
     year: '2025',
  
-    liveUrl: 'https://makeqr.studio',
+    liveUrl: 'https://makeqr.live',
     githubUrl: 'https://github.com/aravindp/makeQR'
   },
   {
@@ -34,7 +34,7 @@ export const projectsData: Project[] = [
   
     title: 'Discord Echo',
     image: '/discordEcho.png',
-    tags: ['Vercel', 'API', 'Discord', 'Spotify', 'Live Status'],
+    tags: ['Vercel', 'API', 'Discord', 'Live Status'],
     description: 'A self-hosted presence dashboard that surfaces Discord status, coding activity, and Spotify listening data on the web.',
     client: 'Discord Echo',
     year: '2026',
