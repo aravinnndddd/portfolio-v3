@@ -82,7 +82,7 @@ export default function Header({
   return (
     <header
       id="nav-header"
-      className="sticky top-0 z-50 w-full border-b border-[#e5e5e5] glass-nav transition-all duration-300"
+      className="fixed inset-x-0 top-0 z-50 w-full border-b border-[#e5e5e5] glass-nav transition-all duration-300"
     >
       {/* Top Reading Progress Bar */}
       <motion.div

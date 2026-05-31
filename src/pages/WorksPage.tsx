@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Works from "../components/Works";
+import ScrollReveal from "../components/ScrollReveal";
 import Footer from "../components/Footer";
 import { Project } from "../types";
 import { projectsData } from "../data";
@@ -46,14 +47,16 @@ export default function WorksPage({
         onNavigateSection={onNavigateSection}
       />
 
-      <main className="grow w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <section className=" pb-20">
-          <Works
-            onSelectProject={onSelectProject}
-            projects={projectsData}
-            title="All"
-          />
-        </section>
+      <main className="grow w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-28 relative z-10">
+        <ScrollReveal>
+          <section className=" pb-20">
+            <Works
+              onSelectProject={onSelectProject}
+              projects={projectsData}
+              title="All"
+            />
+          </section>
+        </ScrollReveal>
       </main>
 
       <Footer />

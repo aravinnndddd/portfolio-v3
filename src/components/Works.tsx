@@ -63,7 +63,8 @@ export default function Works({
                 key={project.id}
                 layout
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.28 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
                 className={`group bg-white border border-neutral-100 ambient-shadow overflow-hidden transition-all duration-500 hover:shadow-xl rounded-sm flex flex-col justify-between`}

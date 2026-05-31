@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import { Mail, Github, Instagram, Send } from "lucide-react";
 
 const contactEmail = "aravindlernskills@gmail.com";
@@ -99,7 +100,13 @@ export default function ContactForm() {
         </div>
 
         <div className="lg:col-span-8">
-          <div className="rounded-lg border border-neutral-200 bg-white p-6 md:p-10 shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.99 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.6 }}
+            className="rounded-lg border border-neutral-200 bg-white p-6 md:p-10 shadow-sm"
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -184,7 +191,7 @@ export default function ContactForm() {
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

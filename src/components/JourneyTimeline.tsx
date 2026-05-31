@@ -32,6 +32,14 @@ export default function JourneyTimeline() {
           {/* Direct Mobile Side Line */}
           <div className="md:hidden absolute left-0 top-0 bottom-0 w-px bg-neutral-300" />
 
+          <motion.div
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px origin-top -translate-x-1/2 bg-black/80"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
+          />
+
           <div className="space-y-16">
             {journeyData.map((item, index) => {
               const isEven = index % 2 === 0;
@@ -44,8 +52,12 @@ export default function JourneyTimeline() {
                 : "md:flex-row-reverse";
 
               return (
-                <div
+                <motion.div
                   key={item.id}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.55, delay: index * 0.08 }}
                   className={`relative flex flex-col md:flex-row items-stretch ${alignContainer}`}
                 >
                   {/* Left or Right info card based on grid order */}
@@ -111,7 +123,7 @@ export default function JourneyTimeline() {
                   </button>
 
                   <div className="hidden md:block w-1/2" />
-                </div>
+                </motion.div>
               );
             })}
           </div>

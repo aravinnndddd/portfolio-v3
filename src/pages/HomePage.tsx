@@ -5,6 +5,7 @@ import Works from "../components/Works";
 import Skills from "../components/Skills.tsx";
 import ServicesList from "../components/ServicesList";
 import JourneyTimeline from "../components/JourneyTimeline";
+import ScrollReveal from "../components/ScrollReveal";
 
 import Footer from "../components/Footer";
 import { Project } from "../types";
@@ -63,24 +64,36 @@ export default function HomePage({
         onNavigateSection={onNavigateSection}
       />
 
-      <main className="grow w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <Hero />
+      <main className="grow w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-28 relative z-10">
+        <ScrollReveal>
+          <Hero />
+        </ScrollReveal>
 
-        <Works
-          onSelectProject={onSelectProject}
-          projects={featuredProjects}
-          showViewAllButton={true}
-          onViewAllWorks={onViewAllWorks}
-          viewAllLabel="View All Works"
-          showFooterCta={true}
-          title="Selected"
-          subtitle="Works"
-        />
+        <ScrollReveal>
+          <Works
+            onSelectProject={onSelectProject}
+            projects={featuredProjects}
+            showViewAllButton={true}
+            onViewAllWorks={onViewAllWorks}
+            viewAllLabel="View All Works"
+            showFooterCta={true}
+            title="Selected"
+            subtitle="Works"
+          />
+        </ScrollReveal>
 
-        <Skills />
-        <ServicesList />
-        <JourneyTimeline />
-        <ContactForm />
+        <ScrollReveal>
+          <Skills />
+        </ScrollReveal>
+        <ScrollReveal>
+          <ServicesList />
+        </ScrollReveal>
+        <ScrollReveal>
+          <JourneyTimeline />
+        </ScrollReveal>
+        <ScrollReveal>
+          <ContactForm />
+        </ScrollReveal>
       </main>
 
       <Footer />
