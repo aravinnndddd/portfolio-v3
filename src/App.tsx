@@ -1,90 +1,140 @@
-import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import Lenis from "lenis";
-import { gsap } from "gsap";
-import { Analytics } from "@vercel/analytics/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Works from "./pages/Works";
-import Footer from "./components/Footer";
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "motion/react";
+import ProjectDetailModal from "./components/ProjectDetailModal";
+import { Project } from "./types";
+import HomePage from "./pages/HomePage";
+import WorksPage from "./pages/WorksPage";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const ScrollManager: React.FC = () => {
-  const { pathname } = useLocation();
+export default function App() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isWorksPage, setIsWorksPage] = useState(
+    () => window.location.pathname === "/works",
+  );
+  const [pendingSectionScroll, setPendingSectionScroll] = useState<
+    string | null
+  >(null);
 
   useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-
-    const reset = () => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+    const handleRouteChange = () => {
+      setIsWorksPage(window.location.pathname === "/works");
     };
 
-    reset();
-    const raf = requestAnimationFrame(reset);
-    const timeoutId = window.setTimeout(reset, 50);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.clearTimeout(timeoutId);
-    };
-  }, [pathname]);
-
-  return null;
-};
-
-const App: React.FC = () => {
-  useEffect(() => {
-    // Lenis Smooth Scroll
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    return () => {
-      lenis.destroy();
-    };
+    window.addEventListener("popstate", handleRouteChange);
+    return () => window.removeEventListener("popstate", handleRouteChange);
   }, []);
 
+  useEffect(() => {
+    if (isWorksPage || !pendingSectionScroll) {
+      return;
+    }
+
+    const sectionId = pendingSectionScroll;
+    const offset = 80;
+
+    requestAnimationFrame(() => {
+      const element = document.getElementById(sectionId);
+      if (!element) {
+        return;
+      }
+
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      setPendingSectionScroll(null);
+    });
+  }, [isWorksPage, pendingSectionScroll]);
+
+  const handleLetBuildScroll = () => {
+    const contactSection = document.getElementById("contact");
+    if (!contactSection) {
+      return;
+    }
+
+    const offset = 80;
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = contactSection.getBoundingClientRect().top;
+    const elementPosition = elementRect - bodyRect;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+
+    const formCard = contactSection.querySelector(".bg-white");
+    if (formCard) {
+      formCard.classList.add("ring-2", "ring-black");
+      setTimeout(() => {
+        formCard.classList.remove("ring-2", "ring-black");
+      }, 1500);
+    }
+  };
+
+  const navigateToPath = (path: string) => {
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, "", path);
+    }
+
+    setIsWorksPage(path === "/works");
+    setSelectedProject(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNavigateSection = (sectionId: string) => {
+    if (sectionId === "works") {
+      navigateToPath("/works");
+      return;
+    }
+
+    if (isWorksPage) {
+      setPendingSectionScroll(sectionId);
+      navigateToPath("/");
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+    if (!element) {
+      return;
+    }
+
+    const offset = 80;
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = element.getBoundingClientRect().top;
+    const elementPosition = elementRect - bodyRect;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+  };
+
   return (
-    <Router>
-      <main className="bg-background text-foreground selection:bg-accent/30 selection:text-white">
-        <Analytics />
-        <ScrollManager />
+    <>
+      {isWorksPage ? (
+        <WorksPage
+          onSelectProject={setSelectedProject}
+          onBackHome={() => navigateToPath("/")}
+          onLetBuildClick={handleLetBuildScroll}
+          onNavigateSection={handleNavigateSection}
+        />
+      ) : (
+        <HomePage
+          onSelectProject={setSelectedProject}
+          onViewAllWorks={() => navigateToPath("/works")}
+          onLetBuildClick={handleLetBuildScroll}
+          onNavigateSection={handleNavigateSection}
+        />
+      )}
 
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/works" element={<Works />} />
-        </Routes>
-        <Footer />
-      </main>
-    </Router>
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectDetailModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
-};
-
-export default App;
+}

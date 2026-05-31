@@ -1,310 +1,118 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { Cpu, Database, Layout, Rocket, Smartphone, Zap } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { motion } from "motion/react";
+import {
+  Code,
+  Terminal,
+  Database,
+  Globe,
+  CheckCircle,
+  Sparkles,
+} from "lucide-react";
+import { skillsData } from "../data";
 
-interface Skill {
-  category: string;
-  items: string[];
-  Icon: LucideIcon;
-}
-
-interface Service {
-  title: string;
-  description: string;
-  Icon: LucideIcon;
-}
-
-const skills: Skill[] = [
-  {
-    category: "Languages",
-    items: ["TypeScript", "JavaScript", "HTML5", "CSS3"],
-    Icon: Layout,
-  },
-  {
-    category: "Tools",
-    items: ["VS Code", "GitHub", "Figma", "Vercel"],
-    Icon: Zap,
-  },
-  {
-    category: "Databases",
-    items: ["NoSQL", "SQL"],
-    Icon: Database,
-  },
-];
-
-const services: Service[] = [
-  {
-    title: "Portfolio Websites",
-    description:
-      "High-performance personal and brand websites with custom motion.",
-    Icon: Layout,
-  },
-  {
-    title: "Landing Pages",
-    description:
-      "Conversion-focused product pages optimized for speed and SEO.",
-    Icon: Rocket,
-  },
-  {
-    title: "Ecommerce Websites",
-    description:
-      "Fast, conversion-focused online stores with clean checkout experiences.",
-    Icon: Cpu,
-  },
-  {
-    title: "Responsive UI",
-    description:
-      "Mobile-first interfaces that stay clean and usable on every screen.",
-    Icon: Smartphone,
-  },
-];
-
-const Skills: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const serviceCardsRef = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Header Animation
-      gsap.from(".skills-header > *", {
-        opacity: 0,
-        y: 30,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-
-      // Cards Entrance
-      gsap.from(cardsRef.current, {
-        opacity: 0,
-        y: 50,
-        stagger: 0.1,
-        duration: 1.2,
-        ease: "expo.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-      });
-
-      // Continuous scroll motion to make the section feel more alive.
-      gsap.to(cardsRef.current, {
-        yPercent: -8,
-        stagger: 0.12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-
-      // Reveal each skill line when its card enters viewport.
-      cardsRef.current.forEach((card) => {
-        if (!card) return;
-
-        const skillItems = card.querySelectorAll(".skill-item");
-        gsap.from(skillItems, {
-          opacity: 0,
-          x: -18,
-          stagger: 0.08,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 82%",
-          },
-        });
-      });
-
-      gsap.from(".services-header > *", {
-        opacity: 0,
-        y: 20,
-        stagger: 0.12,
-        duration: 0.9,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".services-section",
-          start: "top 85%",
-        },
-      });
-
-      gsap.from(serviceCardsRef.current, {
-        opacity: 0,
-        y: 40,
-        stagger: 0.1,
-        duration: 0.9,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".services-section",
-          start: "top 82%",
-        },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
-  const handleMouseMove = (
-    e: React.MouseEvent<HTMLDivElement>,
-    index: number,
-  ) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
-
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const xc = rect.width / 2;
-    const yc = rect.height / 2;
-
-    const dx = x - xc;
-    const dy = y - yc;
-
-    // Spotlight effect using CSS variables
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-
-    // 3D Tilt using GSAP
-    gsap.to(card, {
-      rotationY: dx / 15,
-      rotationX: -dy / 15,
-      scale: 1.02,
-      duration: 0.4,
-      ease: "power2.out",
-    });
-  };
-
-  const handleMouseLeave = (index: number) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
-
-    gsap.to(card, {
-      rotationY: 0,
-      rotationX: 0,
-      scale: 1,
-      duration: 0.6,
-      ease: "power3.out",
-    });
+export default function Skills() {
+  const getCategoryIcon = (iconName: string) => {
+    switch (iconName) {
+      case "code":
+        return <Code className="h-5 w-5 text-black" />;
+      case "terminal":
+        return <Terminal className="h-5 w-5 text-black" />;
+      case "database":
+        return <Database className="h-5 w-5 text-black" />;
+      case "globe":
+        return <Globe className="h-5 w-5 text-black" />;
+      default:
+        return <Code className="h-5 w-5 text-black" />;
+    }
   };
 
   return (
     <section
       id="skills"
-      ref={sectionRef}
-      className="py-24 md:py-48 px-8 md:px-24 bg-black overflow-hidden relative"
+      className="py-20 md:py-28 text-black border-t border-neutral-200"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-end mb-24 skills-header">
-          <div>
-            <span className="text-secondary text-[10px] md:text-xs font-black tracking-[0.5em] uppercase mb-6 block opacity-50">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="lg:col-span-4 space-y-6">
+          <div className="space-y-4">
+            <p className="font-mono text-xs text-neutral-500 uppercase tracking-widest font-bold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-black rounded-full" />
               Technical Arsenal
-            </span>
-            <h2 className="text-6xl md:text-[8rem] font-black text-white tracking-tighter leading-[0.8]">
-              Skills &<br />
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: "2px white" }}
-              >
-                Expertise
-              </span>
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight">
+              Skills & <br />
+              <span className="text-outline">Expertise</span>
             </h2>
-          </div>
-          <div className="max-w-md">
-            <p className="text-xl text-white/40 leading-relaxed font-medium">
-              A comprehensive toolkit for modern web development, engineered for
-              high-performance and premium user experiences.
+            <p className="text-neutral-600 leading-relaxed max-w-md">
+              I build polished product experiences with a practical stack that
+              stays fast, maintainable, and easy to extend.
             </p>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((skill, idx) => (
-            <div
-              key={idx}
-              ref={(el) => {
-                cardsRef.current[idx] = el;
-              }}
-              onMouseMove={(e) => handleMouseMove(e, idx)}
-              onMouseLeave={() => handleMouseLeave(idx)}
-              className="skill-card glass-dark p-10 rounded-[2.5rem] border border-white/5 hover:border-white/10 transition-colors group relative overflow-hidden perspective-1000"
-            >
-              {/* Dynamic Spotlight Glow */}
-              <div
-                className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%)`,
-                }}
-              />
-
-              <div className="relative z-10">
-                <div
-                  className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-10 border border-white/10 group-hover:scale-110 group-hover:bg-accent/10 
-                text-white group-hover:text-accent group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-700"
-                >
-                  <skill.Icon size={28} />
-                </div>
-                <h3 className="text-2xl font-black text-white mb-6 tracking-tight uppercase italic">
-                  {skill.category}
-                </h3>
-                <ul className="space-y-4">
-                  {skill.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="skill-item text-white/40 font-bold text-sm tracking-wide flex items-center gap-3 group/item"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent/20 group-hover/item:bg-accent group-hover/item:scale-150 transition-all duration-300" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          <div className="rounded-sm border border-neutral-200 bg-white p-5 shadow-sm space-y-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-500 font-bold flex items-center gap-1.5">
+              <Sparkles className="h-3.5 w-3.5 text-black" />
+              What I optimize for
+            </p>
+            <div className="space-y-3 text-sm text-neutral-700">
+              <div className="flex items-start gap-2">
+                <CheckCircle className="mt-0.5 h-4 w-4 text-black shrink-0" />
+                <span>
+                  Type-safe frontend architecture and reusable components.
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="mt-0.5 h-4 w-4 text-black shrink-0" />
+                <span>
+                  Fast, responsive layouts with strong visual hierarchy.
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="mt-0.5 h-4 w-4 text-black shrink-0" />
+                <span>
+                  Interfaces that feel intentional, sharp, and dependable.
+                </span>
               </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        <div className="services-section mt-20 md:mt-28">
-          <div className="services-header mb-8 md:mb-10">
-            <span className="text-secondary text-[10px] md:text-xs font-black tracking-[0.5em] uppercase mb-4 block opacity-50">
-              Services
-            </span>
-            <h3 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-              Services I Do
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {services.map((service, idx) => (
-              <article
-                key={service.title}
-                ref={(el) => {
-                  serviceCardsRef.current[idx] = el;
-                }}
-                className="glass-dark rounded-3xl border border-white/6 p-6 md:p-7"
-              >
-                <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 text-white flex items-center justify-center mb-5">
-                  <service.Icon size={20} />
+        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skillsData.map((category, index) => (
+            <motion.article
+              key={category.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              className="rounded-sm border border-neutral-200 bg-white p-6 md:p-7 shadow-sm transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-neutral-100">
+                <div className="h-10 w-10 rounded-full bg-neutral-50 border border-neutral-200 flex items-center justify-center">
+                  {getCategoryIcon(category.icon)}
                 </div>
-                <h4 className="text-white text-base md:text-lg font-extrabold tracking-tight mb-2">
-                  {service.title}
-                </h4>
-                <p className="text-white/45 text-sm leading-relaxed font-medium">
-                  {service.description}
-                </p>
-              </article>
-            ))}
-          </div>
+                <div>
+                  <h3 className="font-mono text-xs uppercase tracking-widest font-bold text-neutral-800">
+                    {category.title}
+                  </h3>
+                  <p className="text-sm text-neutral-500 mt-1">
+                    {category.items.length} core areas
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {category.items.map((item) => (
+                  <span
+                    key={item.name}
+                    className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-sm text-neutral-700"
+                  >
+                    {item.name}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Skills;
+}
