@@ -157,7 +157,7 @@ export const servicesData: Service[] = [
 export const journeyData: JourneyItem[] = [
   {
     id: 'freelancer',
-    period: '2023 — Present',
+    period: '2025 — Present',
     title: 'Freelancer',
     organization: 'Web Developer',
     description: 'Building bespoke digital solutions for clients globally, focusing on high-performance frameworks and pristine structural aesthetics.',
@@ -165,7 +165,7 @@ export const journeyData: JourneyItem[] = [
   },
   {
     id: 'gdg-organizer',
-    period: '2023 — Present',
+    period: '2025 — 2026',
     title: 'GDG On Campus Organizer',
     organization: 'College of Engineering Perumon',
     description: 'Organizing tech talks, hands-on workshops, development hackathons, and building a supportive developer community.',
@@ -173,7 +173,7 @@ export const journeyData: JourneyItem[] = [
   },
   {
     id: 'btech-cs',
-    period: '2021 — Present',
+    period: '2024 — Present',
     title: 'B.Tech in Computer Science',
     organization: 'College of Engineering Perumon',
     description: 'Specializing in cloud computing, modern interface architecture, data structures, and computer science logic.',
