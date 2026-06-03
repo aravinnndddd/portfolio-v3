@@ -66,7 +66,7 @@ export const projectsData: Project[] = [
     year: '2025',
  
     liveUrl: 'https://devfest.gdgkochi.org',
-    githubUrl: 'https://github.com/aravindp/devfest-kochi'
+    githubUrl: 'https://github.com/aravinnndddd/devfest-kochi'
   },
   {
     id: 'course-hub',

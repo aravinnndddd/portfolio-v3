@@ -75,7 +75,7 @@ export default function ContactForm() {
               <span>
                 <span className="block font-semibold text-black">GitHub</span>
                 <span className="block text-neutral-500">
-                  github.com/aravindp
+                  github.com/aravinnndddd
                 </span>
               </span>
             </a>
