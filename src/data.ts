@@ -9,11 +9,11 @@ export const projectsData: Project[] = [
     image: '/makeqr.png',
     tags: ['Next.js', 'TailwindCSS', 'TypeScript'],
     description: 'A high-end, minimalist QR code generator dashboard interface. Built for creators and premium businesses looking for bespoke aesthetics.',
-    client: 'makeQR Studio Inc.',
+  
     year: '2025',
  
     liveUrl: 'https://makeqr.live',
-    githubUrl: 'https://github.com/aravindp/makeQR'
+  
   },
   {
     id: 'make-resume',
@@ -21,22 +21,52 @@ export const projectsData: Project[] = [
   
     title: 'Make Resume',
     image: '/makeresume.png',
-    tags: ['Next.js', 'TypeScript', 'PDF Export', 'Resume Builder'],
+    tags: [ 'TypeScript', 'PDF Export', 'Resume Builder'],
     description: 'A polished resume builder with multiple templates, streamlined editing, and PDF downloads for fast job applications.',
-    client: 'Make Resume',
+
     year: '2026',
 
     liveUrl: 'https://make-resume-kohl.vercel.app/'
   },
+   {
+    id: 'kochi-devfest',
+    number: '03',
+
+    title: 'Kochi DevFest',
+    image: '/devfest.png',
+    tags: ['React', 'Framer Motion', 'Vite', 'TailwindCSS', 'Web Audio API'],
+    description: 'An elegant landing page and branding system for Kerala\'s largest developer conference, capturing developer energy with strict architectural restraint.',
+   
+    year: '2025',
+ 
+    liveUrl: 'https://devfest.gdgkochi.org',
+
+  },
+  
+  {
+    id: 'xcepthon',
+    number: '05',
+  
+    title: 'Xcepthon',
+    image: '/xcepthon.png',
+    tags: ['TypeScript', 'React Flow', 'FastAPI', 'TailwindCSS', 'PostgreSQL'],
+    description: 'Designed and developed the official website for XCeptHon, a hackathon event focused on innovation, collaboration, and problem-solving. Built a responsive and modern user interface to showcase event details, registration information, schedules, and participant resources, ensuring a seamless experience across all devices.',
+  
+    year: '2025',
+  
+
+    liveUrl: 'https://xcepthon.in',
+  
+  },
   {
     id: 'discord-echo',
-    number: '03',
+    number: '08',
   
     title: 'Discord Echo',
     image: '/discordEcho.png',
     tags: ['Vercel', 'API', 'Discord', 'Live Status'],
     description: 'A self-hosted presence dashboard that surfaces Discord status, coding activity, and Spotify listening data on the web.',
-    client: 'Discord Echo',
+
     year: '2026',
  
     liveUrl: 'https://discord-echo.vercel.app/'
@@ -49,25 +79,12 @@ export const projectsData: Project[] = [
     image: '/cephall.png',
     tags: ['Scheduling', 'Campus Tools', 'Reservations', 'Web App'],
     description: 'A simple reservation platform for booking classrooms, labs, seminar halls, and campus facilities in seconds.',
-    client: 'CEP Hall',
+  
     year: '2026',
    
     liveUrl: 'https://cep-lab.vercel.app/'
   },
-  {
-    id: 'kochi-devfest',
-    number: '05',
-
-    title: 'Kochi DevFest',
-    image: '/devfest.png',
-    tags: ['React', 'Framer Motion', 'Vite', 'TailwindCSS', 'Web Audio API'],
-    description: 'An elegant landing page and branding system for Kerala\'s largest developer conference, capturing developer energy with strict architectural restraint.',
-    client: 'Google Developer Groups Kochi',
-    year: '2025',
  
-    liveUrl: 'https://devfest.gdgkochi.org',
-    githubUrl: 'https://github.com/aravinnndddd/devfest-kochi'
-  },
   {
     id: 'course-hub',
     number: '06',
@@ -76,12 +93,12 @@ export const projectsData: Project[] = [
     image: '/coursehub.png',
     tags: ['TypeScript', 'React Flow', 'FastAPI', 'TailwindCSS', 'PostgreSQL'],
     description: 'A sleek, hyper-minimalist educational dashboard that visualizes knowledge trees, progression models, and seamless video streaming UI.',
-    client: 'EduTech Labs corp.',
+   
     year: '2024',
   
 
     liveUrl: 'https://coursehub.edutech.io',
-    githubUrl: 'https://github.com/aravindp/coursehub-pro'
+   
   }
 ];
 

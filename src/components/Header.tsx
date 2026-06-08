@@ -75,8 +75,9 @@ export default function Header({
   const navLinks = [
     { label: "Works", id: "works" },
     { label: "Skills", id: "skills" },
-    { label: "Journey", id: "journey" },
+
     { label: "Services", id: "services" },
+    { label: "Journey", id: "journey" },
   ];
 
   return (
