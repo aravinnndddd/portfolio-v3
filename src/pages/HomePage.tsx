@@ -31,7 +31,7 @@ export default function HomePage({
   onLetBuildClick,
   onNavigateSection,
 }: HomePageProps) {
-  const featuredProjects = projectsData.slice(0, 3);
+  const featuredProjects = projectsData.slice(0, 4);
 
   useEffect(() => {
     updateMetaTags({
