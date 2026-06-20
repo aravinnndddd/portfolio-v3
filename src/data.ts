@@ -12,7 +12,7 @@ export const projectsData: Project[] = [
   
     year: '2025',
  
-    liveUrl: 'https://makeqr.live',
+    liveUrl: 'https://makeqr.site',
   
   },
   {
@@ -39,7 +39,7 @@ export const projectsData: Project[] = [
    
     year: '2025',
  
-    liveUrl: 'https://devfest.gdgkochi.org',
+    liveUrl: 'https://devfestkochi.in',
 
   },
   
@@ -97,7 +97,7 @@ export const projectsData: Project[] = [
     year: '2024',
   
 
-    liveUrl: 'https://coursehub.edutech.io',
+    liveUrl: 'https://course-hub-amber.vercel.app/',
    
   }
 ];
