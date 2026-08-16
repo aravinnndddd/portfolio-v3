@@ -8,14 +8,12 @@ import { projectsData } from "../data";
 import { SITE_URL, updateMetaTags } from "../utils/seo";
 
 interface WorksPageProps {
-  onSelectProject: (project: Project) => void;
   onBackHome: () => void;
   onLetBuildClick: () => void;
   onNavigateSection: (sectionId: string) => void;
 }
 
 export default function WorksPage({
-  onSelectProject,
   onBackHome,
   onLetBuildClick,
   onNavigateSection,
@@ -48,13 +46,9 @@ export default function WorksPage({
       />
 
       <main className="grow w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-28 relative z-10">
-        <ScrollReveal>
+        <ScrollReveal parallaxSpeed={-0.06}>
           <section className=" pb-20">
-            <Works
-              onSelectProject={onSelectProject}
-              projects={projectsData}
-              title="All"
-            />
+            <Works projects={projectsData} title="All" />
           </section>
         </ScrollReveal>
       </main>

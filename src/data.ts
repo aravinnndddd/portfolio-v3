@@ -28,19 +28,7 @@ export const projectsData: Project[] = [
 
     liveUrl: 'https://makeitjoin.vercel.app/'
   },
-  {
-    id: 'make-resume',
-    number: '09',
 
-    title: 'Make Resume',
-    image: '/makeresume.png',
-    tags: ['TypeScript', 'PDF Export', 'Resume Builder'],
-    description: 'A polished resume builder with multiple templates, streamlined editing, and PDF downloads for fast job applications.',
-
-    year: '2026',
-
-    liveUrl: 'https://make-resume-kohl.vercel.app/'
-  },
   {
     id: 'kochi-devfest',
     number: '03',
@@ -58,7 +46,7 @@ export const projectsData: Project[] = [
 
   {
     id: 'xcepthon',
-    number: '05',
+    number: '04',
 
     title: 'Xcepthon',
     image: '/xcepthon.png',
@@ -72,8 +60,21 @@ export const projectsData: Project[] = [
 
   },
   {
+    id: 'make-resume',
+    number: '05',
+
+    title: 'Make Resume',
+    image: '/makeresume.png',
+    tags: ['TypeScript', 'PDF Export', 'Resume Builder'],
+    description: 'A polished resume builder with multiple templates, streamlined editing, and PDF downloads for fast job applications.',
+
+    year: '2026',
+
+    liveUrl: 'https://make-resume-kohl.vercel.app/'
+  },
+  {
     id: 'discord-echo',
-    number: '08',
+    number: '06',
 
     title: 'Discord Echo',
     image: '/discordEcho.png',
@@ -86,7 +87,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'cep-hall',
-    number: '04',
+    number: '07',
 
     title: 'CEP Hall',
     image: '/cephall.png',
@@ -100,7 +101,7 @@ export const projectsData: Project[] = [
 
   {
     id: 'course-hub',
-    number: '06',
+    number: '08',
 
     title: 'Course Hub',
     image: '/coursehub.png',

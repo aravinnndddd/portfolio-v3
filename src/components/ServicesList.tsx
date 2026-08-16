@@ -14,28 +14,29 @@ export default function ServicesList() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const getServiceIcon = (iconName: string) => {
+    const iconClass = "h-10 w-10 text-neutral-900 dark:text-white mb-5";
     switch (iconName) {
       case "web":
-        return <Globe className="h-10 w-10 text-black mb-5" />;
+        return <Globe className={iconClass} />;
       case "rocket_launch":
-        return <Rocket className="h-10 w-10 text-black mb-5" />;
+        return <Rocket className={iconClass} />;
       case "shopping_bag":
-        return <ShoppingBag className="h-10 w-10 text-black mb-5" />;
+        return <ShoppingBag className={iconClass} />;
       case "devices":
-        return <Laptop className="h-10 w-10 text-black mb-5" />;
+        return <Laptop className={iconClass} />;
       default:
-        return <Globe className="h-10 w-10 text-black mb-5" />;
+        return <Globe className={iconClass} />;
     }
   };
 
   return (
     <section
       id="services"
-      className="py-20 md:py-28 text-black border-t border-neutral-200"
+      className="py-20 md:py-28 text-neutral-900 dark:text-white border-t border-neutral-200 dark:border-neutral-800"
     >
       <div className="space-y-2 mb-12">
-        <p className="font-mono text-xs text-neutral-500 uppercase tracking-widest font-bold flex items-center gap-1.5ClassName">
-          <span className="w-1.5 h-1.5 bg-black rounded-full" />
+        <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 bg-neutral-900 dark:bg-white rounded-full" />
           Solutions
         </p>
         <h2 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
@@ -54,25 +55,25 @@ export default function ServicesList() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="p-8 bg-white border border-neutral-200 hover:border-black transition-colors duration-300 flex flex-col justify-between group relative [border-radius:4px]"
+              className="p-8 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-white transition-colors duration-300 flex flex-col justify-between group relative rounded-xs"
             >
               <div>
                 {getServiceIcon(service.icon)}
 
-                <h3 className="font-mono text-xs uppercase tracking-widest font-bold text-neutral-900 group-hover:text-black mb-3">
+                <h3 className="font-mono text-xs uppercase tracking-widest font-bold text-neutral-900 dark:text-white mb-3">
                   {service.title}
                 </h3>
 
-                <p className="font-sans text-sm text-[#5e5e5e] leading-relaxed mb-6 font-light">
+                <p className="font-sans text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 font-light">
                   {service.description}
                 </p>
               </div>
 
               {/* Expansion Details Button widget */}
-              <div className="pt-4 border-t border-dashed border-neutral-100">
+              <div className="pt-4 border-t border-dashed border-neutral-200 dark:border-neutral-800">
                 <button
                   onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                  className="w-full flex items-center justify-between text-left font-mono text-[10px] font-bold uppercase text-neutral-600 hover:text-black tracking-wider cursor-pointer"
+                  className="w-full flex items-center justify-between text-left font-mono text-[10px] font-bold uppercase text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white tracking-wider cursor-pointer"
                   aria-label={`View deliverables included in ${service.title}`}
                 >
                   <span>{isExpanded ? "Hide Specs" : "Show Deliverables"}</span>
@@ -80,7 +81,7 @@ export default function ServicesList() {
                     animate={{ rotate: isExpanded ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <ChevronDown className="h-3.5 w-3.5 text-neutral-400" />
+                    <ChevronDown className="h-3.5 w-3.5 text-neutral-400 dark:text-neutral-500" />
                   </motion.div>
                 </button>
 
@@ -96,9 +97,9 @@ export default function ServicesList() {
                         {service.features.map((feature) => (
                           <li
                             key={feature}
-                            className="flex items-center gap-2 font-mono text-[9px] text-[#5e5e5e] leading-tight uppercase font-medium"
+                            className="flex items-center gap-2 font-mono text-[9px] text-neutral-600 dark:text-neutral-400 leading-tight uppercase font-medium"
                           >
-                            <CheckCircle2 className="h-3 w-3 text-black shrink-0" />
+                            <CheckCircle2 className="h-3 w-3 text-neutral-900 dark:text-white shrink-0" />
                             <span>{feature}</span>
                           </li>
                         ))}

@@ -6,6 +6,7 @@ import Skills from "../components/Skills.tsx";
 import ServicesList from "../components/ServicesList";
 import JourneyTimeline from "../components/JourneyTimeline";
 import ScrollReveal from "../components/ScrollReveal";
+import ParallaxElement from "../components/ParallaxElement";
 
 import Footer from "../components/Footer";
 import { Project } from "../types";
@@ -19,14 +20,12 @@ import {
 } from "../utils/seo";
 
 interface HomePageProps {
-  onSelectProject: (project: Project) => void;
   onViewAllWorks: () => void;
   onLetBuildClick: () => void;
   onNavigateSection: (sectionId: string) => void;
 }
 
 export default function HomePage({
-  onSelectProject,
   onViewAllWorks,
   onLetBuildClick,
   onNavigateSection,
@@ -64,14 +63,13 @@ export default function HomePage({
         onNavigateSection={onNavigateSection}
       />
 
-      <main className="grow w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-28 relative z-10">
-        <ScrollReveal>
+      <main className="grow w-full max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-28 relative z-10 space-y-16 md:space-y-24">
+        <ScrollReveal parallaxSpeed={-0.05}>
           <Hero />
         </ScrollReveal>
 
-        <ScrollReveal>
+        <ScrollReveal parallaxSpeed={-0.08}>
           <Works
-            onSelectProject={onSelectProject}
             projects={featuredProjects}
             showViewAllButton={true}
             onViewAllWorks={onViewAllWorks}
@@ -82,16 +80,19 @@ export default function HomePage({
           />
         </ScrollReveal>
 
-        <ScrollReveal>
+        <ScrollReveal parallaxSpeed={-0.06}>
           <Skills />
         </ScrollReveal>
-        <ScrollReveal>
+
+        <ScrollReveal parallaxSpeed={-0.06}>
           <ServicesList />
         </ScrollReveal>
-        <ScrollReveal>
+
+        <ScrollReveal parallaxSpeed={-0.06}>
           <JourneyTimeline />
         </ScrollReveal>
-        <ScrollReveal>
+
+        <ScrollReveal parallaxSpeed={-0.05}>
           <ContactForm />
         </ScrollReveal>
       </main>

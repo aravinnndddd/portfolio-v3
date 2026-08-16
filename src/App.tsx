@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "motion/react";
-import ProjectDetailModal from "./components/ProjectDetailModal";
-import { Project } from "./types";
 import HomePage from "./pages/HomePage";
 import WorksPage from "./pages/WorksPage";
+import SmoothScroll from "./components/SmoothScroll";
+import { ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isWorksPage, setIsWorksPage] = useState(
     () => window.location.pathname === "/works",
   );
@@ -64,11 +62,11 @@ export default function App() {
       behavior: "smooth",
     });
 
-    const formCard = contactSection.querySelector(".bg-white");
+    const formCard = contactSection.querySelector(".bg-white, .dark\\:bg-neutral-900");
     if (formCard) {
-      formCard.classList.add("ring-2", "ring-black");
+      formCard.classList.add("ring-2", "ring-black", "dark:ring-white");
       setTimeout(() => {
-        formCard.classList.remove("ring-2", "ring-black");
+        formCard.classList.remove("ring-2", "ring-black", "dark:ring-white");
       }, 1500);
     }
   };
@@ -79,7 +77,6 @@ export default function App() {
     }
 
     setIsWorksPage(path === "/works");
-    setSelectedProject(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -110,31 +107,22 @@ export default function App() {
   };
 
   return (
-    <>
-      {isWorksPage ? (
-        <WorksPage
-          onSelectProject={setSelectedProject}
-          onBackHome={() => navigateToPath("/")}
-          onLetBuildClick={handleLetBuildScroll}
-          onNavigateSection={handleNavigateSection}
-        />
-      ) : (
-        <HomePage
-          onSelectProject={setSelectedProject}
-          onViewAllWorks={() => navigateToPath("/works")}
-          onLetBuildClick={handleLetBuildScroll}
-          onNavigateSection={handleNavigateSection}
-        />
-      )}
-
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectDetailModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
+    <ThemeProvider>
+      <SmoothScroll>
+        {isWorksPage ? (
+          <WorksPage
+            onBackHome={() => navigateToPath("/")}
+            onLetBuildClick={handleLetBuildScroll}
+            onNavigateSection={handleNavigateSection}
+          />
+        ) : (
+          <HomePage
+            onViewAllWorks={() => navigateToPath("/works")}
+            onLetBuildClick={handleLetBuildScroll}
+            onNavigateSection={handleNavigateSection}
           />
         )}
-      </AnimatePresence>
-    </>
+      </SmoothScroll>
+    </ThemeProvider>
   );
 }

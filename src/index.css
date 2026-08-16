@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
@@ -16,6 +18,13 @@
   --dot-color: #e3e3e3;
   --dot-size: 1.2px;
   --dot-space: 24px;
+  color-scheme: light;
+}
+
+html.dark {
+  --dot-bg: #09090b;
+  --dot-color: #27272a;
+  color-scheme: dark;
 }
 
 html {
@@ -32,10 +41,20 @@ body {
   background-size: var(--dot-space) var(--dot-space);
   background-attachment: fixed;
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  color: #f4f4f5;
 }
 
 .text-outline {
   -webkit-text-stroke: 1px #000000;
+  color: transparent;
+}
+
+html.dark .text-outline {
+  -webkit-text-stroke: 1px #ffffff;
   color: transparent;
 }
 
@@ -48,9 +67,19 @@ body {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
 }
 
+html.dark .ambient-shadow {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
 .glass-nav {
   backdrop-filter: blur(12px);
   background-color: rgba(255, 255, 255, 0.85);
+}
+
+html.dark .glass-nav {
+  backdrop-filter: blur(12px);
+  background-color: rgba(9, 9, 11, 0.85);
+  border-color: #27272a !important;
 }
 
 .no-scrollbar::-webkit-scrollbar {
