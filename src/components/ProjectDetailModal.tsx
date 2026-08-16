@@ -103,7 +103,7 @@ export default function ProjectDetailModal({
                     <User className="h-4 w-4" />
                     <span className="font-semibold text-black">Client:</span>
                     <span className="ml-auto text-right text-xs">
-                      {project.client}
+                      {project.client || "Bespoke Project"}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-[#5e5e5e]">

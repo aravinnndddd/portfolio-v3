@@ -16,8 +16,21 @@ export const projectsData: Project[] = [
 
   },
   {
-    id: 'make-resume',
+    id: 'make-it-join',
     number: '02',
+
+    title: 'Make it join',
+    image: '/makeitjoin.png',
+    tags: ['Event Management', 'Community Platform', 'Registration'],
+    description: 'A modern campus event platform for creating, managing, and discovering events with seamless registrations and community portals.',
+
+    year: '2026',
+
+    liveUrl: 'https://makeitjoin.vercel.app/'
+  },
+  {
+    id: 'make-resume',
+    number: '09',
 
     title: 'Make Resume',
     image: '/makeresume.png',

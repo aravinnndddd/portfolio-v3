@@ -9,6 +9,7 @@ export interface Project {
   
   year: string;
 
+  client?: string;
   liveUrl?: string;
   githubUrl?: string;
 }
