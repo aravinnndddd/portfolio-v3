@@ -26,7 +26,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     if (saved === "light" || saved === "dark") {
       return saved;
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light";
   });
 
   useEffect(() => {

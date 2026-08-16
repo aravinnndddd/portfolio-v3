@@ -6,15 +6,15 @@ import Skills from "../components/Skills.tsx";
 import ServicesList from "../components/ServicesList";
 import JourneyTimeline from "../components/JourneyTimeline";
 import ScrollReveal from "../components/ScrollReveal";
-import ParallaxElement from "../components/ParallaxElement";
-
 import Footer from "../components/Footer";
-import { Project } from "../types";
 import { projectsData } from "../data";
 import ContactForm from "../components/ContactForm.tsx";
 import {
   addStructuredData,
   getPersonSchema,
+  getWebSiteSchema,
+  getItemListSchema,
+  getBreadcrumbSchema,
   SITE_URL,
   updateMetaTags,
 } from "../utils/seo";
@@ -34,29 +34,45 @@ export default function HomePage({
 
   useEffect(() => {
     updateMetaTags({
-      title: "Aravind P | Frontend Developer",
+      title: "Aravind P - Portfolio",
       description:
-        "I build fast, modern portfolio and product experiences with React, Next.js, Tailwind CSS, and TypeScript.",
+        "Portfolio of Aravind P, Frontend Developer & GDG On Campus Lead (2025-2026) at College of Engineering Perumon. Specializing in high-performance React, Next.js, and TypeScript applications.",
       url: SITE_URL,
       keywords: [
         "Aravind P",
         "aravinnndddd",
+        "Aravind P portfolio",
+        "Aravind P developer",
         "Frontend Developer",
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "TypeScript",
-        "Python",
-        "Portfolio",
+        "UI Architect",
+        "React Developer",
+        "Next.js Portfolio",
+        "TypeScript Developer",
+        "GDG On Campus Lead",
+        "GDG On Campus Organizer",
+        "College of Engineering Perumon",
+        "Kerala Web Developer",
+        "Software Engineer India",
+        "MakeQR",
+        "Make Resume",
+        "Kochi DevFest",
       ],
     });
 
-    addStructuredData(getPersonSchema());
+    addStructuredData(getPersonSchema(), "person-schema");
+    addStructuredData(getWebSiteSchema(), "website-schema");
+    addStructuredData(getItemListSchema(projectsData), "projects-schema");
+    addStructuredData(
+      getBreadcrumbSchema([
+        { name: "Home", url: "/" },
+      ]),
+      "breadcrumb-schema"
+    );
   }, []);
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-between selection:bg-neutral-900 selection:text-white overflow-x-hidden antialiased">
-      <div className="absolute top-0 left-0 w-full h-150 pointer-events-none bg-linear-to-b from-white/40 via-transparent to-transparent z-0" />
+    <div className="relative min-h-screen flex flex-col justify-between selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-900 overflow-x-hidden antialiased">
+      <div className="absolute top-0 left-0 w-full h-150 pointer-events-none bg-linear-to-b from-white/40 dark:from-neutral-900/40 via-transparent to-transparent z-0" />
 
       <Header
         onLetBuildClick={onLetBuildClick}

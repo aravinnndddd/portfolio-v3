@@ -45,7 +45,7 @@ export default function Works({
             <button
               type="button"
               onClick={onViewAllWorks}
-              className="inline-flex items-center justify-center rounded-full border border-neutral-900 dark:border-white bg-neutral-900 dark:bg-white px-5 py-3 font-mono text-[10px] font-bold uppercase tracking-widest text-white dark:text-neutral-900 transition-all duration-300 hover:bg-white dark:hover:bg-neutral-900 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
+              className="inline-flex items-center justify-center rounded-none border border-neutral-900 dark:border-white bg-neutral-900 dark:bg-white px-5 py-3 font-mono text-[10px] font-bold uppercase tracking-widest text-white dark:text-neutral-900 transition-all duration-300 hover:bg-white dark:hover:bg-neutral-900 hover:text-neutral-900 dark:hover:text-white cursor-pointer"
             >
               {viewAllLabel}
             </button>
@@ -59,6 +59,7 @@ export default function Works({
           {displayedProjects.map((project, index) => {
             const parallaxSpeed = index % 2 === 0 ? -0.05 : -0.11;
             const projectLink = project.liveUrl || project.githubUrl;
+            const seoAltText = `${project.title} - ${project.description.slice(0, 100)}`;
 
             return (
               <ParallaxElement key={project.id} speed={parallaxSpeed}>
@@ -69,7 +70,7 @@ export default function Works({
                   viewport={{ once: true, amount: 0.25 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-                  className="group bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 ambient-shadow overflow-hidden transition-all duration-500 hover:shadow-xl rounded-sm flex flex-col justify-between"
+                  className="group bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 ambient-shadow overflow-hidden transition-all duration-500 hover:shadow-xl rounded-none flex flex-col justify-between"
                 >
                   {/* Image Section */}
                   {projectLink ? (
@@ -77,12 +78,14 @@ export default function Works({
                       href={projectLink}
                       target="_blank"
                       rel="noreferrer"
+                      aria-label={`Visit live demo for ${project.title}`}
                       className="w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800 relative block cursor-pointer"
                     >
                       <div className="absolute inset-0 bg-neutral-900/5 dark:bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt={seoAltText}
+                        loading="lazy"
                         className="w-full h-full object-cover grayscale opacity-95 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-102"
                         referrerPolicy="no-referrer"
                       />
@@ -91,7 +94,8 @@ export default function Works({
                     <div className="w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800 relative">
                       <img
                         src={project.image}
-                        alt={project.title}
+                        alt={seoAltText}
+                        loading="lazy"
                         className="w-full h-full object-cover grayscale opacity-95"
                       />
                     </div>
@@ -123,13 +127,13 @@ export default function Works({
                         {project.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="font-mono text-[9px] bg-neutral-50 dark:bg-neutral-800 px-2 py-0.5 text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700 uppercase"
+                            className="font-mono text-[9px] bg-neutral-50 dark:bg-neutral-800 px-2 py-0.5 text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700 uppercase rounded-none"
                           >
                             {tag}
                           </span>
                         ))}
                         {project.tags.length > 3 && (
-                          <span className="font-mono text-[9px] bg-neutral-50 dark:bg-neutral-800 px-1.5 py-0.5 text-neutral-400 dark:text-neutral-500 border border-neutral-200 dark:border-neutral-700">
+                          <span className="font-mono text-[9px] bg-neutral-50 dark:bg-neutral-800 px-1.5 py-0.5 text-neutral-400 dark:text-neutral-500 border border-neutral-200 dark:border-neutral-700 rounded-none">
                             +{project.tags.length - 3}
                           </span>
                         )}
@@ -142,8 +146,8 @@ export default function Works({
                         href={projectLink}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex h-12 w-12 items-center justify-center bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-900 dark:hover:bg-white border border-neutral-200 dark:border-neutral-700 hover:border-neutral-900 dark:hover:border-white text-neutral-900 dark:text-white hover:text-white dark:hover:text-neutral-900 transition-all duration-300 cursor-pointer rounded-full shrink-0"
-                        aria-label={`Open ${project.title}`}
+                        className="flex h-12 w-12 items-center justify-center bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-900 dark:hover:bg-white border border-neutral-200 dark:border-neutral-700 hover:border-neutral-900 dark:hover:border-white text-neutral-900 dark:text-white hover:text-white dark:hover:text-neutral-900 transition-all duration-300 cursor-pointer rounded-none shrink-0"
+                        aria-label={`Open external link for ${project.title}`}
                       >
                         <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </a>
