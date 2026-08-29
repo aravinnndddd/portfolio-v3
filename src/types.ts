@@ -6,7 +6,7 @@ export interface Project {
   image: string;
   tags: string[];
   description: string;
-  
+
   year: string;
 
   client?: string;
@@ -17,7 +17,7 @@ export interface Project {
 export interface SkillCategory {
   title: string;
   icon: string;
-  items: { name: string;}[];
+  items: { name: string; }[];
 }
 
 export interface Service {
@@ -33,5 +33,5 @@ export interface JourneyItem {
   title: string;
   organization: string;
   description: string;
-
+  category?: string;
 }

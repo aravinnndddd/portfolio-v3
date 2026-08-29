@@ -191,23 +191,39 @@ export const journeyData: JourneyItem[] = [
     period: '2025 — Present',
     title: 'Freelancer',
     organization: 'Web Developer',
+    category: 'Work Experience',
     description: 'Building bespoke digital solutions for clients globally, focusing on high-performance frameworks and pristine structural aesthetics.',
-
-  },
-  {
-    id: 'gdg-organizer',
-    period: '2025 — 2026',
-    title: 'GDG On Campus Organizer',
-    organization: 'College of Engineering Perumon',
-    description: 'Organizing tech talks, hands-on workshops, development hackathons, and building a supportive developer community.',
-
   },
   {
     id: 'btech-cs',
     period: '2024 — Present',
     title: 'B.Tech in Computer Science',
     organization: 'College of Engineering Perumon',
+    category: 'Campus Journey',
     description: 'Specializing in modern interface architecture, data structures, and computer science logic.',
-
+  },
+  {
+    id: 'ieee-technical-coordinator',
+    period: '2026 — Present',
+    title: 'IEEE SB CEP Technical Coordinator',
+    organization: 'College of Engineering Perumon',
+    category: 'Campus Journey',
+    description: 'Coordinating technical workshops, hackathons, and student engineering projects under the IEEE Student Branch.',
+  },
+  {
+    id: 'tinkerhub-volunteer',
+    period: '2026 — Present',
+    title: 'TinkerHub CEP Volunteer',
+    organization: 'College of Engineering Perumon',
+    category: 'Campus Journey',
+    description: 'Empowering campus tech culture through peer-to-peer learning, open-source initiatives, and skill-building workshops.',
+  },
+  {
+    id: 'gdg-organizer',
+    period: '2025 — 2026',
+    title: 'GDG On Campus Organizer',
+    organization: 'College of Engineering Perumon',
+    category: 'Campus Journey',
+    description: 'Organizing tech talks, hands-on workshops, development hackathons, and building a supportive developer community.',
   }
 ];

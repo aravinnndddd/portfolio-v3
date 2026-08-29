@@ -1,22 +1,60 @@
-import { motion } from "motion/react";
-import { Sparkles } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Sparkles, GraduationCap, Briefcase } from "lucide-react";
 import { journeyData } from "../data";
 
 export default function JourneyTimeline() {
+  const [activeTab, setActiveTab] = useState<string>("All");
+
+  const categories = ["All", "Campus Journey", "Work Experience"];
+
+  const filteredItems =
+    activeTab === "All"
+      ? journeyData
+      : journeyData.filter((item) => item.category === activeTab);
+
   return (
     <section
       id="journey"
       className="py-20 md:py-28 bg-neutral-100 dark:bg-neutral-900/60 border-t border-b border-neutral-200 dark:border-neutral-800 -mx-6 px-6 md:-mx-12 md:px-12 overflow-hidden text-neutral-900 dark:text-white"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="space-y-2 mb-16">
-          <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 bg-neutral-900 dark:bg-white rounded-none" />
-            Trajectory
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
-            My <span className="text-outline">Journey</span>
-          </h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="space-y-2">
+            <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-neutral-900 dark:bg-white rounded-none" />
+              Trajectory
+            </p>
+            <h2 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
+              My <span className="text-outline">Journey</span>
+            </h2>
+          </div>
+
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2">
+            {categories.map((cat) => {
+              const isActive = activeTab === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveTab(cat)}
+                  className={`px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-all duration-200 border cursor-pointer flex items-center gap-1.5 ${
+                    isActive
+                      ? "bg-neutral-900 text-white border-neutral-900 dark:bg-white dark:text-neutral-900 dark:border-white shadow-xs"
+                      : "bg-white text-neutral-600 border-neutral-300 dark:bg-neutral-900 dark:text-neutral-400 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600"
+                  }`}
+                >
+                  {cat === "Campus Journey" && (
+                    <GraduationCap className="h-3 w-3" />
+                  )}
+                  {cat === "Work Experience" && (
+                    <Briefcase className="h-3 w-3" />
+                  )}
+                  <span>{cat}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="relative pl-8 md:pl-0">
@@ -34,60 +72,93 @@ export default function JourneyTimeline() {
           />
 
           <div className="space-y-16">
-            {journeyData.map((item, index) => {
-              const isEven = index % 2 === 0;
+            <AnimatePresence mode="wait">
+              {filteredItems.map((item, index) => {
+                const isEven = index % 2 === 0;
 
-              const sideClass = isEven ? "md:text-right md:pr-12" : "md:pl-12";
-              const alignContainer = isEven
-                ? "md:flex-row"
-                : "md:flex-row-reverse";
+                const sideClass = isEven
+                  ? "md:text-right md:pr-12"
+                  : "md:pl-12";
+                const alignContainer = isEven
+                  ? "md:flex-row"
+                  : "md:flex-row-reverse";
 
-              return (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.55, delay: index * 0.08 }}
-                  className={`relative flex flex-col md:flex-row items-stretch ${alignContainer}`}
-                >
-                  {/* Info block based on grid order */}
-                  <div
-                    className={`w-full md:w-1/2 flex flex-col ${isEven ? "md:items-end justify-center" : "items-start justify-center"} ${sideClass}`}
+                return (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -16 }}
+                    transition={{ duration: 0.4, delay: index * 0.06 }}
+                    className={`relative flex flex-col md:flex-row items-stretch ${alignContainer}`}
                   >
+                    {/* Info block based on grid order */}
                     <div
-                      className={`text-left ${isEven ? "md:text-right" : "text-left"} py-2`}
+                      className={`w-full md:w-1/2 flex flex-col ${
+                        isEven
+                          ? "md:items-end justify-center"
+                          : "items-start justify-center"
+                      } ${sideClass}`}
                     >
-                      <span className="font-mono text-[10px] text-neutral-500 dark:text-neutral-400 uppercase tracking-widest block font-semibold">
-                        {item.period}
-                      </span>
+                      <div
+                        className={`text-left ${
+                          isEven ? "md:text-right" : "text-left"
+                        } py-2`}
+                      >
+                        <div className="flex flex-wrap items-center gap-2 mb-1.5 justify-start md:justify-end">
+                          {isEven ? (
+                            <>
+                              <span className="font-mono text-[10px] text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-semibold">
+                                {item.period}
+                              </span>
+                              {item.category && (
+                                <span className="inline-block font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-neutral-300 dark:border-neutral-700 bg-neutral-200/60 dark:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 font-bold">
+                                  {item.category}
+                                </span>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {item.category && (
+                                <span className="inline-block font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 border border-neutral-300 dark:border-neutral-700 bg-neutral-200/60 dark:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 font-bold">
+                                  {item.category}
+                                </span>
+                              )}
+                              <span className="font-mono text-[10px] text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-semibold">
+                                {item.period}
+                              </span>
+                            </>
+                          )}
+                        </div>
 
-                      <h3 className="font-display text-xl md:text-2xl font-extrabold text-neutral-900 dark:text-white mt-1">
-                        {item.title}
-                      </h3>
+                        <h3 className="font-display text-xl md:text-2xl font-extrabold text-neutral-900 dark:text-white mt-1">
+                          {item.title}
+                        </h3>
 
-                      <p className="font-sans text-sm text-neutral-600 dark:text-neutral-300 font-semibold mt-1">
-                        {item.organization}
-                      </p>
+                        <p className="font-sans text-sm text-neutral-600 dark:text-neutral-300 font-semibold mt-1">
+                          {item.organization}
+                        </p>
 
-                      <p className="font-sans text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 leading-relaxed font-light">
-                        {item.description}
-                      </p>
+                        <p className="font-sans text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 leading-relaxed font-light max-w-lg">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Sharp Square Marker anchor on timeline */}
-                  <div
-                    className="absolute left-[-40px] md:left-1/2 z-10 block"
-                    style={{ transform: "translateX(-50%)", top: "24px" }}
-                  >
-                    <span className="flex h-3.5 w-3.5 rounded-none bg-neutral-900 dark:bg-white border-2 border-neutral-300 dark:border-neutral-700" />
-                  </div>
+                    {/* Sharp Square Marker anchor on timeline */}
+                    <div
+                      className="absolute left-[-40px] md:left-1/2 z-10 block"
+                      style={{ transform: "translateX(-50%)", top: "24px" }}
+                    >
+                      <span className="flex h-3.5 w-3.5 rounded-none bg-neutral-900 dark:bg-white border-2 border-neutral-300 dark:border-neutral-700" />
+                    </div>
 
-                  <div className="hidden md:block w-1/2" />
-                </motion.div>
-              );
-            })}
+                    <div className="hidden md:block w-1/2" />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
         </div>
 

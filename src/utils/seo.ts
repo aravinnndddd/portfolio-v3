@@ -177,6 +177,14 @@ export const getPersonSchema = () => ({
       "@type": "Organization",
       name: "Google Developer Groups On Campus (GDGoC) CEP",
     },
+    {
+      "@type": "Organization",
+      name: "IEEE Student Branch CEP",
+    },
+    {
+      "@type": "Organization",
+      name: "TinkerHub CEP",
+    },
   ],
   memberOf: [
     {
@@ -185,6 +193,18 @@ export const getPersonSchema = () => ({
       startDate: "2025",
       endDate: "2026",
       roleName: "Organizer / Campus Lead",
+    },
+    {
+      "@type": "Organization",
+      name: "IEEE Student Branch CEP",
+      startDate: "2026",
+      roleName: "Technical Coordinator",
+    },
+    {
+      "@type": "Organization",
+      name: "TinkerHub CEP",
+      startDate: "2026",
+      roleName: "Volunteer",
     },
   ],
 });
