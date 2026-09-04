@@ -1,0 +1,44 @@
+# Aravind P
+
+> Modern Web Developer & Technical Coordinator crafting high-performance web applications, bespoke UI systems, and developer tools with aesthetic restraint and technical precision.
+
+## About
+- **Name**: Aravind P
+- **Location**: Kerala, India (UTC+5:30)
+- **Role**: Freelance Web Developer | IEEE SB CEP Technical Coordinator | TinkerHub Volunteer | Ex-GDG On Campus Lead ('25-26)
+- **Education**: B.Tech in Computer Science, College of Engineering Perumon (2024 — Present)
+- **Status**: Available for Projects (Remote Worldwide)
+- **Email**: aravindlernskills@gmail.com
+- **Website**: https://aravind-p.me/
+- **GitHub**: https://github.com/aravinnndddd
+- **LinkedIn**: https://www.linkedin.com/in/aravind-p-832849331/
+- **Instagram**: https://instagram.com/aravinnndddd
+
+## Core Technologies & Skills
+- **Frontend**: React, Next.js, Tailwind CSS, JavaScript (ES6+), HTML5, CSS3, Framer Motion
+- **Languages**: TypeScript, JavaScript, Python, HTML5, CSS3
+- **Databases**: NoSQL (MongoDB, Firebase), SQL (MySQL, PostgreSQL)
+- **Tools & Platforms**: VS Code, GitHub, Figma, Vercel, Netlify
+
+## Featured Projects
+- [makeQR](https://makeqr.site): High-end, minimalist QR code generator dashboard interface built for creators and premium businesses looking for bespoke aesthetics. (Next.js, TailwindCSS, TypeScript)
+- [Make it join](https://makeitjoin.vercel.app/): Campus event platform for creating, managing, and discovering events with seamless registrations and community portals. (Event Management, Community Platform, Registration)
+- [Kochi DevFest](https://devfestkochi.in): Elegant landing page and branding system for Kerala's largest developer conference, capturing developer energy with strict architectural restraint. (React, Framer Motion, Vite, TailwindCSS, Web Audio API)
+- [Xcepthon](https://xcepthon.in): Official website for XCeptHon, a hackathon event focused on innovation, collaboration, and problem-solving. Responsive UI showcasing schedules and participant resources. (TypeScript, React Flow, FastAPI, TailwindCSS, PostgreSQL)
+- [Make Resume](https://make-resume-kohl.vercel.app/): Polished resume builder with multiple templates, streamlined editing, and PDF downloads for fast job applications. (TypeScript, PDF Export, Resume Builder)
+- [Discord Echo](https://discord-echo.vercel.app/): Self-hosted presence dashboard surfacing Discord status, coding activity, and Spotify listening data on the web. (Vercel, API, Discord, Live Status)
+- [CEP Hall](https://cep-lab.vercel.app/): Reservation platform for booking classrooms, labs, seminar halls, and campus facilities in seconds. (Scheduling, Campus Tools, Reservations, Web App)
+- [Course Hub](https://course-hub-amber.vercel.app/): Hyper-minimalist educational dashboard visualizing knowledge trees, progression models, and streaming UI. (TypeScript, React Flow, FastAPI, TailwindCSS, PostgreSQL)
+
+## Services Offered
+- **Portfolio Websites**: High-performance personal and brand websites with custom motion that set you apart.
+- **Landing Pages**: Conversion-focused product pages engineered to load instantly, optimized for speed and Lighthouse 100 scores.
+- **Ecommerce**: Fast, clean online stores matching modern design with friction-free checkout workflows.
+- **Responsive UI**: Mobile-first interfaces designed to stay sharp, readable, and highly interactive on any viewport.
+
+## Experience & Journey
+- **Freelance Web Developer** (2025 — Present): Building bespoke digital solutions for clients globally with high-performance frameworks.
+- **IEEE SB CEP Technical Coordinator** (2026 — Present): Coordinating technical workshops, hackathons, and engineering projects at College of Engineering Perumon.
+- **TinkerHub CEP Volunteer** (2026 — Present): Empowering campus tech culture through peer-to-peer learning, open-source initiatives, and skill-building.
+- **GDG On Campus Organizer** (2025 — 2026): Organised tech talks, hands-on workshops, hackathons, and built developer community.
+- **B.Tech in Computer Science** (2024 — Present): College of Engineering Perumon.
