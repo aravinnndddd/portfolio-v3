@@ -4,6 +4,8 @@ export interface Project {
 
   title: string;
   image: string;
+  editorialImage?: string;
+  tagline?: string;
   tags: string[];
   description: string;
 

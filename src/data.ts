@@ -2,11 +2,26 @@ import { Project, SkillCategory, Service, JourneyItem } from './types';
 
 export const projectsData: Project[] = [
   {
-    id: 'makeqr',
+    id: 'make-it-join',
     number: '01',
 
-    title: 'makeQR',
+    title: 'MakeItJoin',
+    image: '/makeitjoin.png',
+    tagline: 'Event & Community Registration Platform',
+    tags: ['Event Management', 'Community Platform', 'Registration'],
+    description: 'A modern campus event platform for creating, managing, and discovering events with seamless registrations and community portals.',
+
+    year: '2026',
+
+    liveUrl: 'https://makeitjoin.vercel.app/'
+  },
+  {
+    id: 'makeqr',
+    number: '02',
+
+    title: 'MakeQR',
     image: '/makeqr.png',
+    tagline: 'Beautiful. Custom. Yours.',
     tags: ['Next.js', 'TailwindCSS', 'TypeScript'],
     description: 'A high-end, minimalist QR code generator dashboard interface. Built for creators and premium businesses looking for bespoke aesthetics.',
 
@@ -14,19 +29,6 @@ export const projectsData: Project[] = [
 
     liveUrl: 'https://makeqr.site',
 
-  },
-  {
-    id: 'make-it-join',
-    number: '02',
-
-    title: 'Make it join',
-    image: '/makeitjoin.png',
-    tags: ['Event Management', 'Community Platform', 'Registration'],
-    description: 'A modern campus event platform for creating, managing, and discovering events with seamless registrations and community portals.',
-
-    year: '2026',
-
-    liveUrl: 'https://makeitjoin.vercel.app/'
   },
 
   {
@@ -89,8 +91,9 @@ export const projectsData: Project[] = [
     id: 'cep-hall',
     number: '07',
 
-    title: 'CEP Hall',
+    title: 'cep-hall',
     image: '/cephall.png',
+    tagline: 'Campus Hall Booking System',
     tags: ['Scheduling', 'Campus Tools', 'Reservations', 'Web App'],
     description: 'A simple reservation platform for booking classrooms, labs, seminar halls, and campus facilities in seconds.',
 
@@ -98,10 +101,23 @@ export const projectsData: Project[] = [
 
     liveUrl: 'https://cep-lab.vercel.app/'
   },
+  // {
+  //   id: 'pandaara-kothuk',
+  //   number: '08',
 
+  //   title: 'Pandaara Kothuk',
+  //   image: '/pandaara_kothuk.png',
+  //   tagline: 'A uselessly fun project',
+  //   tags: ['Creative Tech', 'Fun Experiment', 'Interactive'],
+  //   description: 'A playfully creative and uselessly fun web experiment designed to explore interactive micro-animations and physics.',
+
+  //   year: '2026',
+
+  //   liveUrl: 'https://github.com/aravinnndddd'
+  // },
   {
     id: 'course-hub',
-    number: '08',
+    number: '09',
 
     title: 'Course Hub',
     image: '/coursehub.png',
