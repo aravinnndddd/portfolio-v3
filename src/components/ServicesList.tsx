@@ -1,117 +1,139 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import {
-  Globe,
-  Rocket,
-  ShoppingBag,
-  Laptop,
-  ChevronDown,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { servicesData } from "../data";
 
 export default function ServicesList() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const getServiceIcon = (iconName: string) => {
-    const iconClass = "h-10 w-10 text-neutral-900 dark:text-white mb-5";
-    switch (iconName) {
-      case "web":
-        return <Globe className={iconClass} />;
-      case "rocket_launch":
-        return <Rocket className={iconClass} />;
-      case "shopping_bag":
-        return <ShoppingBag className={iconClass} />;
-      case "devices":
-        return <Laptop className={iconClass} />;
-      default:
-        return <Globe className={iconClass} />;
-    }
-  };
+  const customServices = [
+    {
+      title: "Portfolio Websites",
+      description:
+        "Custom, high-speed portfolio websites for developers, designers, and professionals looking to stand out online.",
+      features: [
+        "Unique modern layouts",
+        "Smooth micro-animations",
+        "Mobile & desktop responsive",
+        "Search engine optimized (SEO)",
+      ],
+    },
+    {
+      title: "Landing Pages",
+      description:
+        "High-converting landing pages designed to showcase products, generate leads, and explain complex ideas clearly.",
+      features: [
+        "High conversion layout",
+        "Fast page load times",
+        "Contact form validation",
+        "Google Analytics setup",
+      ],
+    },
+    {
+      title: "Web Applications",
+      description:
+        "Full-stack React and Next.js applications featuring interactive dashboards, user logins, and cloud databases.",
+      features: [
+        "React & Next.js architecture",
+        "REST API integration",
+        "Secure database connections",
+        "User authentication",
+      ],
+    },
+    {
+      title: "UI & Frontend Development",
+      description:
+        "Turning design files (Figma / Adobe XD) into pixel-perfect, accessible, and clean frontend code.",
+      features: [
+        "Figma to clean code",
+        "Tailwind CSS styling",
+        "Cross-browser testing",
+        "Reusable components",
+      ],
+    },
+  ];
 
   return (
-    <section
-      id="services"
-      className="py-20 md:py-28 text-neutral-900 dark:text-white border-t border-neutral-200 dark:border-neutral-800"
-    >
-      <div className="space-y-2 mb-12">
-        <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 bg-neutral-900 dark:bg-white rounded-full" />
-          Solutions
-        </p>
-        <h2 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight">
-          Services I Do
-        </h2>
+    <div id="services" className="w-full border border-black dark:border-neutral-800 bg-[#ECEAE5] dark:bg-[#121212]">
+      {/* Header Banner */}
+      <div className="p-6 md:p-10 border-b border-black dark:border-neutral-800">
+        <div className="grid grid-cols-12 gap-6 items-end">
+          <div className="col-span-12 lg:col-span-8">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase font-bold text-neutral-600 dark:text-neutral-400 mb-3 tracking-widest">
+              <span>[03.2]</span>
+              <span className="w-px h-3 bg-black dark:bg-white inline-block" />
+              <span>WHAT I DO</span>
+            </div>
+
+            <h2 className="font-condensed text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-[0.88] text-black dark:text-white">
+              SERVICES &amp;<br />
+              SOLUTIONS.
+            </h2>
+          </div>
+
+          <div className="col-span-12 lg:col-span-4">
+            <p className="font-sans text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              Professional web development services to help you design, build, and launch fast,
+              clean, and modern digital products.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {servicesData.map((service, index) => {
-          const isExpanded = expandedIndex === index;
+      {/* 4-Column Modular Swiss Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-black dark:border-neutral-800">
+        {customServices.map((service, index) => {
+          const isLastCol = index === customServices.length - 1;
+          const isRightCol2 = index % 2 === 1;
 
           return (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.55, delay: index * 0.08 }}
-              className="p-8 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-white transition-colors duration-300 flex flex-col justify-between group relative rounded-xs"
+              className={`p-6 xl:p-8 flex flex-col justify-between border-b lg:border-b-0 border-black dark:border-neutral-800 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group ${
+                !isLastCol ? "lg:border-r" : ""
+              } ${!isRightCol2 ? "md:border-r lg:border-r-0" : ""}`}
             >
               <div>
-                {getServiceIcon(service.icon)}
+                {/* Index + Tag */}
+                <div className="flex items-center justify-between font-mono text-xs font-bold text-neutral-600 dark:text-neutral-400 mb-6 pb-3 border-b border-black/15 dark:border-white/15">
+                  <span className="text-black dark:text-white font-extrabold text-sm">
+                    0{index + 1}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-wider">
+                    SERVICE // AVAILABLE
+                  </span>
+                </div>
 
-                <h3 className="font-mono text-xs uppercase tracking-widest font-bold text-neutral-900 dark:text-white mb-3">
+                {/* Title */}
+                <h3 className="font-condensed text-2xl xl:text-3xl font-black uppercase tracking-tight text-black dark:text-white leading-none mb-3 group-hover:underline">
                   {service.title}
                 </h3>
 
-                <p className="font-sans text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 font-light">
+                {/* Description */}
+                <p className="font-sans text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6">
                   {service.description}
                 </p>
+
+                {/* Features List */}
+                <div className="space-y-2 pt-4 border-t border-black/10 dark:border-white/10 font-mono text-[11px] text-neutral-800 dark:text-neutral-200 font-semibold">
+                  {service.features.map((feat) => (
+                    <div key={feat} className="flex items-start gap-2">
+                      <span className="text-neutral-400">✦</span>
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Expansion Details Button widget */}
-              <div className="pt-4 border-t border-dashed border-neutral-200 dark:border-neutral-800">
-                <button
-                  onClick={() => setExpandedIndex(isExpanded ? null : index)}
-                  className="w-full flex items-center justify-between text-left font-mono text-[10px] font-bold uppercase text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white tracking-wider cursor-pointer"
-                  aria-label={`View deliverables included in ${service.title}`}
-                >
-                  <span>{isExpanded ? "Hide Specs" : "Show Deliverables"}</span>
-                  <motion.div
-                    animate={{ rotate: isExpanded ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ChevronDown className="h-3.5 w-3.5 text-neutral-400 dark:text-neutral-500" />
-                  </motion.div>
-                </button>
-
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <ul className="space-y-2 mt-4 pt-1">
-                        {service.features.map((feature) => (
-                          <li
-                            key={feature}
-                            className="flex items-center gap-2 font-mono text-[9px] text-neutral-600 dark:text-neutral-400 leading-tight uppercase font-medium"
-                          >
-                            <CheckCircle2 className="h-3 w-3 text-neutral-900 dark:text-white shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+              {/* Bottom Action */}
+              <div className="pt-6 mt-6 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
+                <span className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">
+                  READY TO BUILD
+                </span>
+                <div className="flex items-center justify-center h-7 w-7 border border-transparent group-hover:border-black dark:group-hover:border-white group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
+                  <ArrowUpRight className="h-4 w-4" />
+                </div>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,156 +1,184 @@
-import { motion } from 'motion/react';
-import { ArrowDown, ArrowUpRight, MapPin, Code2, Globe } from 'lucide-react';
-import ParallaxElement from './ParallaxElement';
+import { ArrowUpRight, ArrowDown } from "lucide-react";
 
-export default function Hero() {
+interface HeroProps {
+  onViewWorkClick?: () => void;
+}
+
+export default function Hero({ onViewWorkClick }: HeroProps) {
   const scrollToWorks = () => {
-    const element = document.getElementById('works');
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    if (onViewWorkClick) {
+      onViewWorkClick();
+      return;
     }
-  };
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
+    const element = document.getElementById("projects");
     if (element) {
       const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const offsetPosition = elementRect - bodyRect - offset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   };
 
   return (
-    <section id="home" className="relative flex min-h-[75vh] flex-col justify-center py-10 md:py-16">
-      {/* Subtle top index bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-neutral-200/80 dark:border-neutral-800 pb-4"
-      >
-        <div id="availability-badge" className="inline-flex items-center gap-2.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 px-3.5 py-1.5 rounded-none hover:bg-neutral-200/60 dark:hover:bg-neutral-800 transition-colors">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
-            Available for Projects
-          </span>
+    <section id="home" className="w-full border-b border-black dark:border-neutral-800">
+      {/* Mobile Hero (Matching Image 1 Left) */}
+      <div className="block lg:hidden">
+        {/* Top Header Label with mini portrait */}
+        <div className="grid grid-cols-12 border-b border-black dark:border-neutral-800">
+          <div className="col-span-7 p-4 sm:p-6 flex flex-col justify-center">
+            <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-800 dark:text-neutral-300 font-bold">
+              <span>01</span>
+              <span className="w-px h-3 bg-black dark:bg-white inline-block mx-1" />
+              <span>TURNING IDEAS INTO IMPACT.</span>
+            </div>
+          </div>
+          <div className="col-span-5 border-l border-black dark:border-neutral-800 h-48 sm:h-56 overflow-hidden bg-[#dedbd3] dark:bg-neutral-800 relative">
+            <img
+              src="/editorial/hero_portrait.webp"
+              alt="Aravind P"
+              className="w-full h-full object-cover grayscale object-[center_24%] contrast-105"
+            />
+          </div>
         </div>
 
-        <div className="font-mono text-xs uppercase tracking-widest text-neutral-400 dark:text-neutral-500 flex items-center gap-2 font-medium">
-          <span>01 // ARCHITECTURE & UI</span>
-        </div>
-      </motion.div>
+        {/* Big Headline */}
+        <div className="p-6 sm:p-8 border-b border-black dark:border-neutral-800 bg-[#ECEAE5] dark:bg-[#121212]">
+          <h1 className="font-condensed text-[56px] sm:text-[72px] font-black uppercase tracking-tighter leading-[0.88] text-black dark:text-white">
+            BUILD<br />
+            WHAT<br />
+            MATTERS.<span className="text-xl sm:text-2xl font-light align-top ml-1">©</span>
+          </h1>
 
-      {/* Main Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
-        {/* Left Column: Hero Content & Main Typography */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="lg:col-span-7 flex flex-col justify-between"
-        >
+          <p className="font-sans text-sm sm:text-base text-neutral-700 dark:text-neutral-300 mt-6 leading-relaxed max-w-md">
+            I&apos;m Aravind P, a developer and artist who loves building web apps, drawing, and bringing creative ideas to life.
+          </p>
+
+          <div className="mt-6">
+            <button
+              onClick={scrollToWorks}
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#7C8D69] hover:bg-[#71815E] text-black font-mono text-xs uppercase tracking-wider font-bold border border-black dark:border-neutral-800 shadow-none transition-colors cursor-pointer"
+            >
+              <span>VIEW MY WORK</span>
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Hero (Matching Image 2 Desktop, fitting 100vh) */}
+      <div className="hidden lg:grid grid-cols-12 items-stretch h-[calc(100vh-65px)] min-h-[560px] max-h-[760px]">
+        {/* Left Column: Headline, Bio, CTA */}
+        <div className="col-span-6 p-8 xl:p-12 border-r border-black dark:border-neutral-800 flex flex-col justify-between">
           <div>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
-              Aravind P<span className="text-neutral-400 dark:text-neutral-600 font-light">.</span>
+            <div className="flex items-center justify-between font-mono text-xs uppercase tracking-wider text-neutral-800 dark:text-neutral-300 font-bold mb-6">
+              <div className="flex items-center gap-2">
+                <span>01</span>
+                <span className="w-px h-3.5 bg-black dark:bg-white inline-block mx-1" />
+                <span>TURNING IDEAS INTO IMPACT.</span>
+              </div>
+              <div className="hidden xl:flex items-center gap-3 text-[10px] tracking-widest text-neutral-500 dark:text-neutral-400">
+                <span>DEVELOPER</span>
+                <span>•</span>
+                <span>ARTIST</span>
+                <span>•</span>
+                <span>CREATIVE</span>
+              </div>
+            </div>
+
+            <h1 className="font-condensed text-[84px] xl:text-[104px] font-black uppercase tracking-tighter leading-[0.86] text-black dark:text-white">
+              BUILD<br />
+              WHAT<br />
+              MATTERS.<span className="text-2xl xl:text-3xl font-light align-top ml-1">©</span>
             </h1>
 
-            <p className="font-sans text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl mb-8">
-              Crafting high-performance web applications with a focus on <strong className="text-neutral-900 dark:text-white font-semibold">aesthetic restraint</strong>, speed, and <strong className="text-neutral-900 dark:text-white font-semibold">technical precision</strong>.
+            <p className="font-sans text-sm xl:text-base text-neutral-700 dark:text-neutral-300 mt-6 xl:mt-8 leading-relaxed max-w-lg">
+              I&apos;m Aravind P, a developer and artist who loves building web apps, drawing, and bringing creative ideas to life.
             </p>
           </div>
 
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="pt-6">
             <button
               onClick={scrollToWorks}
-              className="inline-flex items-center gap-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-mono text-xs uppercase tracking-wider px-5 py-3 rounded-none hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all duration-200 shadow-xs cursor-pointer group"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#7C8D69] hover:bg-[#71815E] text-black font-mono text-xs uppercase tracking-wider font-bold border border-black dark:border-neutral-800 shadow-none transition-colors cursor-pointer"
             >
-              <span>Explore Works</span>
-              <ArrowDown className="h-3.5 w-3.5 group-hover:translate-y-0.5 transition-transform" />
-            </button>
-
-            <button
-              onClick={scrollToContact}
-              className="inline-flex items-center gap-2 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 font-mono text-xs uppercase tracking-wider px-5 py-3 rounded-none hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 cursor-pointer group"
-            >
-              <span>Get In Touch</span>
-              <ArrowUpRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-neutral-500 dark:text-neutral-400" />
+              <span>VIEW MY WORK</span>
+              <ArrowUpRight className="h-4 w-4" />
             </button>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right Column: Architectural Quick Specs Panel */}
-        <ParallaxElement speed={-0.08} className="lg:col-span-5 flex flex-col">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="w-full border border-neutral-200/80 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md rounded-none p-6 sm:p-7 shadow-xs flex flex-col justify-between gap-6 h-full"
-          >
-            <div className="space-y-5">
-              <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800 pb-3">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500">QUICK SPECS</span>
-                <Code2 className="h-4 w-4 text-neutral-400 dark:text-neutral-500" />
-              </div>
+        {/* Center / Middle Column: Full Height Portrait + Overlaid Brutalist Cards */}
+        <div className="col-span-5 relative flex flex-col border-r border-black dark:border-neutral-800 bg-[#E5E3DC] dark:bg-[#161616] overflow-hidden">
+          {/* Photo filling full height with face and shoulders completely visible */}
+          <div className="w-full h-full relative overflow-hidden bg-[#dedbd3] dark:bg-neutral-800">
+            <img
+              src="/editorial/hero_portrait.webp"
+              alt="Aravind P - Portfolio Hero"
+              className="w-full h-full object-cover grayscale contrast-105 object-[center_18%]"
+            />
 
-              <div className="space-y-4 font-mono text-xs">
-                <div className="flex items-start justify-between gap-4">
-                  <span className="text-neutral-400 dark:text-neutral-500">LOCATION</span>
-                  <span className="text-neutral-800 dark:text-neutral-200 text-right font-medium flex items-center gap-1.5">
-                    <MapPin className="h-3 w-3 text-neutral-400 dark:text-neutral-500" /> Kerala, IN (UTC+5:30)
-                  </span>
+            {/* Overlaid Based In Card (Top Right) */}
+            <div className="absolute top-4 right-4 p-3.5 bg-white/95 dark:bg-neutral-900/95 border border-black dark:border-neutral-800 text-black dark:text-white font-mono text-[10px] uppercase font-bold tracking-wider leading-snug shadow-sm backdrop-blur-xs z-10">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  BASED IN<br />
+                  KERALA, INDIA<br />
+                  <span className="text-neutral-500 dark:text-neutral-400 font-normal">(UTC +5:30)</span>
                 </div>
-
-                <div className="flex items-start justify-between gap-4">
-                  <span className="text-neutral-400 dark:text-neutral-500">CORE STACK</span>
-                  <span className="text-neutral-800 dark:text-neutral-200 text-right font-medium">React • Next.js • TypeScript</span>
-                </div>
-
-                <div className="flex items-start justify-between gap-4">
-                  <span className="text-neutral-400 dark:text-neutral-500">FOCUS</span>
-                  <span className="text-neutral-800 dark:text-neutral-200 text-right font-medium">Interactive Web Apps & UI Systems</span>
-                </div>
-
-                <div className="flex items-start justify-between gap-4">
-                  <span className="text-neutral-400 dark:text-neutral-500">EXPERIENCE</span>
-                  <span className="text-neutral-800 dark:text-neutral-200 text-right font-medium">GDGoC Lead {'('}25-26{")"} • Freelancer</span>
-                </div>
+                <ArrowDown className="h-3.5 w-3.5 text-black dark:text-white -rotate-45" />
               </div>
             </div>
 
-            <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-              <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 font-mono text-[11px]">
-                <Globe className="h-3.5 w-3.5 text-neutral-400 dark:text-neutral-500" />
-                <span>Remote Worldwide</span>
-              </div>
-
-              <button
-                onClick={scrollToWorks}
-                className="group flex items-center gap-1.5 text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors font-mono text-[11px] uppercase tracking-wider cursor-pointer"
-              >
-                <span>Scroll</span>
-                <ArrowDown className="h-3 w-3 group-hover:translate-y-0.5 transition-transform" />
-              </button>
+            {/* Overlaid Keywords Vertical Pill (Top Left) */}
+            <div className="absolute top-4 left-4 p-2.5 bg-black/85 text-white border border-black dark:border-neutral-800 font-mono text-[9px] uppercase tracking-widest leading-loose font-bold hidden sm:flex flex-col z-10">
+              <span>DEVELOP</span>
+              <span>DESIGN</span>
+              <span>ORGANIZE</span>
+              <span>REPEAT</span>
             </div>
-          </motion.div>
-        </ParallaxElement>
+
+            {/* Solid Green Box overlay (Bottom Left) */}
+            <div className="absolute bottom-4 left-4 p-3 xl:p-3.5 bg-[#7C8D69] text-black border border-black dark:border-neutral-800 font-mono text-[9px] xl:text-[10px] uppercase tracking-wider font-bold leading-tight shadow-sm z-10">
+              <div>CODE</div>
+              <div>DRAWING</div>
+              <div>CREATIVE</div>
+              <div className="text-black/75">BUILDING IDEAS.</div>
+            </div>
+
+            {/* Currently Card (Bottom Right) */}
+            <div className="absolute bottom-4 right-4 p-3 xl:p-3.5 bg-white/95 dark:bg-neutral-900/95 border border-black dark:border-neutral-800 text-black dark:text-white font-mono text-[9px] xl:text-[10px] uppercase font-bold leading-tight max-w-[190px] shadow-sm backdrop-blur-xs z-10">
+              <div className="flex items-center justify-between text-neutral-500 dark:text-neutral-400 mb-1">
+                <span>CURRENTLY</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </div>
+              <div className="text-black dark:text-white">
+                S5 CSE<br />
+                COLLEGE OF ENGINEERING<br />
+                PERUMON
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Margin Strip (Desktop) */}
+        <div className="col-span-1 p-4 flex flex-col justify-between items-center text-center font-mono text-[10px] uppercase font-bold tracking-widest text-neutral-600 dark:text-neutral-400">
+          <div className="py-4 [writing-mode:vertical-rl] tracking-widest">
+            MAKE IDEAS REAL
+          </div>
+
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-px h-16 bg-black dark:bg-neutral-700" />
+            <div className="font-condensed text-base font-extrabold tracking-widest text-black dark:text-white">
+              20<br />26
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center gap-1 py-4">
+            <span className="text-[9px]">SCROLL<br />DOWN</span>
+            <span className="w-px h-6 bg-black dark:bg-neutral-700 inline-block mt-1" />
+          </div>
+        </div>
       </div>
     </section>
   );
