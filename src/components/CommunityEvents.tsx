@@ -7,7 +7,7 @@ export default function CommunityEvents() {
       sub: "Organizer (2025-2026)",
       logo: (
         <img
-          src="/logo/gdg_logo.png"
+          src="/logo/gdg_logo.webp"
           alt="GDG on Campus CEP"
           className="h-8 max-w-[130px] object-contain"
         />
@@ -18,7 +18,7 @@ export default function CommunityEvents() {
       sub: "Technical Coordinator",
       logo: (
         <img
-          src="/logo/sb.png"
+          src="/logo/sb.webp"
           alt="IEEE SB CEP"
           className="h-8 max-w-[110px] object-contain"
         />
@@ -29,7 +29,7 @@ export default function CommunityEvents() {
       sub: "Volunteer",
       logo: (
         <img
-          src="/logo/th_logo.png"
+          src="/logo/th_logo.webp"
           className="h-8 max-w-[110px] object-contain"
           alt="Tinkerhub CEP"
         />
@@ -61,9 +61,8 @@ export default function CommunityEvents() {
           {communities.map((comm, idx) => (
             <div
               key={comm.name}
-              className={`p-3 sm:p-5 flex flex-col items-center justify-center text-center ${
-                idx < 2 ? "border-r border-black dark:border-neutral-800" : ""
-              }`}
+              className={`p-3 sm:p-5 flex flex-col items-center justify-center text-center ${idx < 2 ? "border-r border-black dark:border-neutral-800" : ""
+                }`}
             >
               {/* Equal height logo box */}
               <div className="h-10 w-full flex items-center justify-center">
@@ -86,8 +85,8 @@ export default function CommunityEvents() {
         {/* Audience Banner Below */}
         <div className="relative h-36 overflow-hidden">
           <img
-            src="/editorial/community_audience.jpg"
-            alt="Community Audience"
+            src="/editorial/cep.webp"
+            alt="College of Engineering Perumon"
             className="w-full h-full object-cover grayscale brightness-75"
           />
           <div className="absolute inset-0 p-4 flex flex-col justify-end text-white font-mono text-[10px] leading-tight font-medium bg-black/30">
@@ -143,7 +142,7 @@ export default function CommunityEvents() {
         {/* Right Photo Card: Brutalist Building + Perumon tag */}
         <div className="col-span-2 relative overflow-hidden">
           <img
-            src="/editorial/brutalist_arch.jpg"
+            src="/editorial/cep.webp"
             alt="College of Engineering Perumon"
             className="w-full h-full object-cover grayscale brightness-75"
           />

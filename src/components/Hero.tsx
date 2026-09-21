@@ -35,7 +35,7 @@ export default function Hero({ onViewWorkClick }: HeroProps) {
           </div>
           <div className="col-span-5 border-l border-black dark:border-neutral-800 h-48 sm:h-56 overflow-hidden bg-[#dedbd3] dark:bg-neutral-800 relative">
             <img
-              src="/editorial/hero_portrait.png"
+              src="/editorial/hero_portrait.webp"
               alt="Aravind P"
               className="w-full h-full object-cover grayscale object-[center_24%] contrast-105"
             />
@@ -113,7 +113,7 @@ export default function Hero({ onViewWorkClick }: HeroProps) {
           {/* Photo filling full height with face and shoulders completely visible */}
           <div className="w-full h-full relative overflow-hidden bg-[#dedbd3] dark:bg-neutral-800">
             <img
-              src="/editorial/hero_portrait.png"
+              src="/editorial/hero_portrait.webp"
               alt="Aravind P - Portfolio Hero"
               className="w-full h-full object-cover grayscale contrast-105 object-[center_18%]"
             />

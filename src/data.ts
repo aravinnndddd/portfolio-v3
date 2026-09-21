@@ -6,7 +6,7 @@ export const projectsData: Project[] = [
     number: '01',
 
     title: 'MakeItJoin',
-    image: '/makeitjoin.png',
+    image: '/projects/makeitjoin.webp',
     tagline: 'Event & Community Registration Platform',
     tags: ['Event Management', 'Community Platform', 'Registration'],
     description: 'A modern campus event platform for creating, managing, and discovering events with seamless registrations and community portals.',
@@ -20,7 +20,7 @@ export const projectsData: Project[] = [
     number: '02',
 
     title: 'MakeQR',
-    image: '/makeqr.png',
+    image: '/projects/makeqr.webp',
     tagline: 'Beautiful. Custom. Yours.',
     tags: ['Next.js', 'TailwindCSS', 'TypeScript'],
     description: 'A high-end, minimalist QR code generator dashboard interface. Built for creators and premium businesses looking for bespoke aesthetics.',
@@ -36,7 +36,7 @@ export const projectsData: Project[] = [
     number: '03',
 
     title: 'Kochi DevFest',
-    image: '/devfest.png',
+    image: '/projects/devfest.webp',
     tags: ['React', 'Framer Motion', 'Vite', 'TailwindCSS', 'Web Audio API'],
     description: 'An elegant landing page and branding system for Kerala\'s largest developer conference, capturing developer energy with strict architectural restraint.',
 
@@ -51,7 +51,7 @@ export const projectsData: Project[] = [
     number: '04',
 
     title: 'Xcepthon',
-    image: '/xcepthon.png',
+    image: '/projects/xcepthon.webp',
     tags: ['TypeScript', 'React Flow', 'FastAPI', 'TailwindCSS', 'PostgreSQL'],
     description: 'Designed and developed the official website for XCeptHon, a hackathon event focused on innovation, collaboration, and problem-solving. Built a responsive and modern user interface to showcase event details, registration information, schedules, and participant resources, ensuring a seamless experience across all devices.',
 
@@ -66,7 +66,7 @@ export const projectsData: Project[] = [
     number: '05',
 
     title: 'Make Resume',
-    image: '/makeresume.png',
+    image: '/projects/makeresume.webp',
     tags: ['TypeScript', 'PDF Export', 'Resume Builder'],
     description: 'A polished resume builder with multiple templates, streamlined editing, and PDF downloads for fast job applications.',
 
@@ -79,7 +79,7 @@ export const projectsData: Project[] = [
     number: '06',
 
     title: 'Discord Echo',
-    image: '/discordEcho.png',
+    image: '/projects/discordEcho.webp',
     tags: ['Vercel', 'API', 'Discord', 'Live Status'],
     description: 'A self-hosted presence dashboard that surfaces Discord status, coding activity, and Spotify listening data on the web.',
 
@@ -92,7 +92,7 @@ export const projectsData: Project[] = [
     number: '07',
 
     title: 'cep-hall',
-    image: '/cephall.png',
+    image: '/projects/cephall.webp',
     tagline: 'Campus Hall Booking System',
     tags: ['Scheduling', 'Campus Tools', 'Reservations', 'Web App'],
     description: 'A simple reservation platform for booking classrooms, labs, seminar halls, and campus facilities in seconds.',
@@ -106,7 +106,7 @@ export const projectsData: Project[] = [
   //   number: '08',
 
   //   title: 'Pandaara Kothuk',
-  //   image: '/pandaara_kothuk.png',
+  //   image: '/projects/pandaara_kothuk.webp',
   //   tagline: 'A uselessly fun project',
   //   tags: ['Creative Tech', 'Fun Experiment', 'Interactive'],
   //   description: 'A playfully creative and uselessly fun web experiment designed to explore interactive micro-animations and physics.',
@@ -120,7 +120,7 @@ export const projectsData: Project[] = [
     number: '09',
 
     title: 'Course Hub',
-    image: '/coursehub.png',
+    image: '/projects/coursehub.webp',
     tags: ['TypeScript', 'React Flow', 'FastAPI', 'TailwindCSS', 'PostgreSQL'],
     description: 'A sleek, hyper-minimalist educational dashboard that visualizes knowledge trees, progression models, and seamless video streaming UI.',
 

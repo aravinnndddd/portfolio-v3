@@ -180,7 +180,7 @@ export default function WorksPage({
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 border-black dark:border-neutral-800">
           {filteredProjects.map((project, idx) => {
             const projectUrl = project.liveUrl || project.githubUrl || "#";
-            const imgSrc = project.image || "/makeitjoin.png";
+            const imgSrc = project.image || "/projects/makeitjoin.webp";
 
             return (
               <div

@@ -52,7 +52,7 @@ export default function Works({
             const projectUrl = project.liveUrl || project.githubUrl || "#";
             const isRightCol = index % 2 === 1;
             const isBottomRow = index >= 2;
-            const imgSrc = project.image || "/makeitjoin.png";
+            const imgSrc = project.image || "/projects/makeitjoin.webp";
 
             return (
               <a
@@ -131,7 +131,7 @@ export default function Works({
         {displayItems.map((project, index) => {
           const projectUrl = project.liveUrl || project.githubUrl || "#";
           const isLast = index === displayItems.length - 1;
-          const imgSrc = project.image || "/makeitjoin.png";
+          const imgSrc = project.image || "/projects/makeitjoin.webp";
 
           return (
             <a

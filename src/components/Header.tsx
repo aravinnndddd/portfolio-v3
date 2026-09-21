@@ -254,7 +254,7 @@ export default function Header({
             <div className="grid grid-cols-2 border-b border-black dark:border-neutral-800">
               <div className="h-28 overflow-hidden border-r border-black dark:border-neutral-800">
                 <img
-                  src="/editorial/brutalist_arch.jpg"
+                  src="/editorial/brutalist_arch.webp"
                   alt="Architecture"
                   className="w-full h-full object-cover grayscale"
                 />

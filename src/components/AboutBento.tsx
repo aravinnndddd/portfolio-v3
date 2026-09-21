@@ -15,7 +15,7 @@ export default function AboutBento({ onMoreAboutMeClick }: AboutBentoProps) {
         {/* Nature photo banner */}
         <div className="relative h-72 sm:h-80 overflow-hidden border-b border-black dark:border-neutral-800">
           <img
-            src="/editorial/forest_canopy.jpg"
+            src="/editorial/forest_canopy.webp"
             alt="Nature Canopy"
             className="w-full h-full object-cover grayscale brightness-90"
           />
@@ -91,7 +91,7 @@ export default function AboutBento({ onMoreAboutMeClick }: AboutBentoProps) {
         {/* Card 1: Nature Forest Photo & Process Quote */}
         <div className="col-span-3 relative border-r border-black dark:border-neutral-800 overflow-hidden">
           <img
-            src="/editorial/forest_canopy.jpg"
+            src="/editorial/forest_canopy.webp"
             alt="Forest Canopy"
             className="w-full h-full object-cover grayscale brightness-90"
           />
