@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { projectsData } from "../data";
 import { SITE_URL, updateMetaTags } from "../utils/seo";
-import { ArrowUpRight, ArrowLeft, ExternalLink, Github, Terminal, Sparkles } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ExternalLink, Github, Terminal, Sparkles, BookOpen } from "lucide-react";
 
 interface WorksPageProps {
   onBackHome: () => void;
@@ -220,8 +220,15 @@ export default function WorksPage({
                     />
 
                     {/* Overlay badge */}
-                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-black/80 text-white font-mono text-[9px] uppercase tracking-wider font-bold border border-white/20 backdrop-blur-xs">
-                      {project.liveUrl ? "LIVE" : "CODE"}
+                    <div className="absolute top-2 right-2 flex items-center gap-1.5">
+                      {project.articleUrl && (
+                        <span className="px-2 py-0.5 bg-[#7C8D69] text-black font-mono text-[9px] uppercase tracking-wider font-bold border border-black">
+                          ARTICLE
+                        </span>
+                      )}
+                      <div className="px-2 py-0.5 bg-black/80 text-white font-mono text-[9px] uppercase tracking-wider font-bold border border-white/20 backdrop-blur-xs">
+                        {project.liveUrl ? "LIVE" : "CODE"}
+                      </div>
                     </div>
                   </a>
 
@@ -273,6 +280,19 @@ export default function WorksPage({
                     <div className="font-mono text-xs text-neutral-500 uppercase">
                       IN DEVELOPMENT
                     </div>
+                  )}
+
+                  {project.articleUrl && (
+                    <a
+                      href={project.articleUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-2.5 border border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                      title="Read article on Medium"
+                      aria-label="Read article on Medium"
+                    >
+                      <BookOpen className="h-4 w-4" />
+                    </a>
                   )}
 
                   {project.githubUrl ? (

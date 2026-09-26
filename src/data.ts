@@ -1,4 +1,4 @@
-import { Project, SkillCategory, Service, JourneyItem } from './types';
+import { Project, SkillCategory, Service, JourneyItem, BlogPost } from './types';
 
 export const projectsData: Project[] = [
   {
@@ -13,7 +13,8 @@ export const projectsData: Project[] = [
 
     year: '2026',
 
-    liveUrl: 'https://makeitjoin.vercel.app/'
+    liveUrl: 'https://makeitjoin.vercel.app/',
+    articleUrl: 'https://medium.com/@aravindlernskills/building-makeitjoin-rethinking-how-communities-get-people-in-12a4ab9be7ba'
   },
   {
     id: 'makeqr',
@@ -241,5 +242,23 @@ export const journeyData: JourneyItem[] = [
     organization: 'College of Engineering Perumon',
     category: 'Campus Journey',
     description: 'Organizing tech talks, hands-on workshops, development hackathons, and building a supportive developer community.',
+  }
+];
+
+export const mediumProfileUrl = 'https://medium.com/@aravindlernskills';
+
+export const blogPostsData: BlogPost[] = [
+  {
+    id: 'building-makeitjoin',
+    title: 'Building MakeItJoin: Rethinking How Communities Get People In',
+    subtitle: 'From generic form fatigue to an AI-powered onboarding OS.',
+    description: 'A deep dive into why traditional Google Forms break down for hackathons and communities, and how we engineered an AI-powered onboarding OS with instant Google Sheets sync and 1-click decision inboxes.',
+    coverImage: '/projects/makeitjoin.webp',
+    publishedAt: 'Sep 2026',
+    readTime: '5 min read',
+    url: 'https://medium.com/@aravindlernskills/building-makeitjoin-rethinking-how-communities-get-people-in-12a4ab9be7ba',
+    tags: ['Product Design', 'Groq AI', 'Community', 'TypeScript', 'SaaS'],
+    platform: 'Medium',
+    featured: true
   }
 ];

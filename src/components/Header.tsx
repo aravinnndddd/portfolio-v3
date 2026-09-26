@@ -17,7 +17,7 @@ export default function Header({
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "projects", "experience", "contact"];
+      const sections = ["home", "about", "projects", "experience", "blog", "contact"];
       const viewportPoint = window.scrollY + 200;
 
       let current = "home";
@@ -73,7 +73,7 @@ export default function Header({
     { label: "ABOUT", id: "about", num: "02" },
     { label: "PROJECTS", id: "projects", num: "03" },
     { label: "EXPERIENCE", id: "experience", num: "04" },
-    { label: "BLOG", id: "experience", num: "05" },
+    { label: "BLOG", id: "blog", num: "05" },
     { label: "CONTACT", id: "contact", num: "06" },
   ];
 

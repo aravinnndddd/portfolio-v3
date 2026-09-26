@@ -64,12 +64,17 @@ export default function Works({
                   } ${!isBottomRow ? "border-b border-black dark:border-neutral-800" : ""}`}
               >
                 {/* Artwork Box */}
-                <div className="w-full aspect-square overflow-hidden bg-black/5 dark:bg-white/5 border border-black/20 dark:border-neutral-700/50 mb-3">
+                <div className="w-full aspect-square overflow-hidden bg-black/5 dark:bg-white/5 border border-black/20 dark:border-neutral-700/50 mb-3 relative">
                   <img
                     src={imgSrc}
                     alt={project.title}
                     className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
                   />
+                  {project.articleUrl && (
+                    <span className="absolute top-1.5 left-1.5 z-10 bg-black text-white dark:bg-white dark:text-black px-1.5 py-0.5 font-mono text-[8px] uppercase font-bold tracking-wider">
+                      ARTICLE
+                    </span>
+                  )}
                 </div>
 
                 {/* Details */}
@@ -149,6 +154,11 @@ export default function Works({
                   alt={project.title}
                   className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                 />
+                {project.articleUrl && (
+                  <span className="absolute top-2 left-2 z-10 bg-black text-white dark:bg-white dark:text-black px-2 py-0.5 font-mono text-[9px] uppercase font-bold tracking-wider">
+                    ARTICLE
+                  </span>
+                )}
               </div>
 
               {/* Title & Subtitle */}

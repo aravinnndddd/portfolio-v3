@@ -5,6 +5,7 @@ import FilterBar from "../components/FilterBar";
 import Works from "../components/Works";
 import AboutBento from "../components/AboutBento";
 import CommunityEvents from "../components/CommunityEvents";
+import BlogSection from "../components/BlogSection";
 import ContactSection from "../components/ContactSection";
 import Skills from "../components/Skills";
 import JourneyTimeline from "../components/JourneyTimeline";
@@ -88,7 +89,7 @@ export default function HomePage({
         window.scrollTo({ top: elementRect - bodyRect - offset, behavior: "smooth" });
       }
     } else if (filter === "THOUGHTS") {
-      const el = document.getElementById("about");
+      const el = document.getElementById("blog") || document.getElementById("about");
       if (el) {
         const offset = 80;
         const bodyRect = document.body.getBoundingClientRect().top;
@@ -211,7 +212,10 @@ export default function HomePage({
         {/* [04] Community & Events */}
         <CommunityEvents />
 
-        {/* [05] Let's Connect */}
+        {/* [05] Writing & Essays */}
+        <BlogSection />
+
+        {/* [06] Let's Connect */}
         <ContactSection />
       </main>
 

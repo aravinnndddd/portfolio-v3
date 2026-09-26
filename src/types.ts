@@ -14,6 +14,21 @@ export interface Project {
   client?: string;
   liveUrl?: string;
   githubUrl?: string;
+  articleUrl?: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  coverImage?: string;
+  publishedAt: string;
+  readTime: string;
+  url: string;
+  tags: string[];
+  platform: string;
+  featured?: boolean;
 }
 
 export interface SkillCategory {
